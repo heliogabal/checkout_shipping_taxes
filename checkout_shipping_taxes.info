@@ -3,6 +3,7 @@ core = 7.x
 package = Features
 version = 7.x-1.0-dev
 project = checkout_shipping_taxes
+project status url = http://features.otro-mundo.org/fserver
 dependencies[] = commerce
 dependencies[] = commerce_backoffice
 dependencies[] = commerce_backoffice_order
