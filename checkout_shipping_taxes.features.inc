@@ -213,7 +213,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_briefsendung_bis_1000g',
-      'weight' => 0,
+      'weight' => 10,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'briefsendung_bis_1000g_details_form',
@@ -239,7 +239,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_briefsendung_bis_500g',
-      'weight' => 1,
+      'weight' => 11,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'briefsendung_bis_500g_details_form',
@@ -265,7 +265,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_deutschland_p_ckchen_bis_2000g',
-      'weight' => 3,
+      'weight' => 13,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'deutschland_p_ckchen_bis_2000g_details_form',
@@ -291,7 +291,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_deutschland_paket_bis_10000g',
-      'weight' => 2,
+      'weight' => 12,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'deutschland_paket_bis_10000g_details_form',
@@ -317,7 +317,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_1000g',
-      'weight' => 4,
+      'weight' => 14,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_1000g_details_form',
@@ -343,7 +343,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_500g',
-      'weight' => 5,
+      'weight' => 15,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_500g_details_form',
@@ -369,7 +369,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_50g',
-      'weight' => 6,
+      'weight' => 16,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_50g_details_form',
@@ -395,7 +395,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_p_ckchen_bis_2000g',
-      'weight' => 8,
+      'weight' => 18,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_p_ckchen_bis_2000g_details_form',
@@ -421,7 +421,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_paket_bis_5000g',
-      'weight' => 7,
+      'weight' => 17,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_paket_bis_5000g_details_form',
@@ -447,7 +447,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_versandkosten_inklusive',
-      'weight' => 9,
+      'weight' => 19,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'versandkosten_inklusive_details_form',

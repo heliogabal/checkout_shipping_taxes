@@ -1,7 +1,7 @@
 name = Checkout Shipping Taxes
 core = 7.x
 package = Features
-version = 7.x-1.17-alpha7
+version = 7.x-1.17-alpha8
 project = checkout_shipping_taxes
 dependencies[] = addressfield
 dependencies[] = commerce

@@ -427,11 +427,6 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_product" } },
         { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_unit_price" } },
         { "component_rules_check_if_the_product_has_7_vat" : { "product" : [ "commerce-line-item:commerce-product" ] } },
-        { "NOT user_has_role" : {
-            "account" : [ "site:current-user" ],
-            "roles" : { "value" : { "4" : "4" } }
-          }
-        },
         { "OR" : [
             { "component_rules_wenn_noch_kein_land_bekannt_ist" : [] },
             { "component_rules_check_if_the_shipping_is_to_eu" : [] }
@@ -465,7 +460,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "USES VARIABLES" : { "commerce_line_item" : { "label" : "Line item", "type" : "commerce_line_item" } },
       "IF" : [
         { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_product" } },
-        { "component_rules_check_if_the_product_has_19_vat" : { "product" : [ "commerce-line-item:commerce-product" ] } },
+        { "component_rules_check_if_the_product_has_19_vat" : [] },
         { "component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_unit_price" } },
         { "NOT user_has_role" : {
