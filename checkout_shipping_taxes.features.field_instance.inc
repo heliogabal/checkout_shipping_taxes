@@ -386,7 +386,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'currency_code' => 'default',
       ),
       'type' => 'commerce_price_full',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -528,7 +528,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'display_label' => TRUE,
       ),
       'type' => 'options_onoff',
-      'weight' => 12,
+      'weight' => 7,
     ),
   );
 
@@ -676,8 +676,16 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'media',
       'settings' => array(
+        'allowed_schemes' => array(
+          0 => 'public',
+          1 => 'private',
+        ),
+        'allowed_types' => array(
+          0 => 'image',
+        ),
+        'browser_plugins' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(),
           'source_attach' => array(
@@ -695,8 +703,8 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'image_image',
-      'weight' => 7,
+      'type' => 'media_generic',
+      'weight' => 8,
     ),
   );
 
@@ -764,8 +772,16 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'file',
+      'module' => 'media',
       'settings' => array(
+        'allowed_schemes' => array(
+          0 => 'public',
+          1 => 'private',
+        ),
+        'allowed_types' => array(
+          0 => 'image',
+        ),
+        'browser_plugins' => array(),
         'filefield_sources' => array(
           'filefield_sources' => array(),
           'source_attach' => array(
@@ -782,8 +798,8 @@ function checkout_shipping_taxes_field_default_field_instances() {
         ),
         'progress_indicator' => 'bar',
       ),
-      'type' => 'file_generic',
-      'weight' => 8,
+      'type' => 'media_generic',
+      'weight' => 9,
     ),
   );
 
@@ -942,69 +958,6 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'other_unknown_defaults' => 'other',
       ),
       'type' => 'number',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'commerce_product-product-field_wholesale_price'
-  $field_instances['commerce_product-product-field_wholesale_price'] = array(
-    'bundle' => 'product',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'add_to_cart_confirmation_view' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'commerce_product_in_cart' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'line_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'node_aehnliche_produkte' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'node_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-    ),
-    'entity_type' => 'commerce_product',
-    'field_name' => 'field_wholesale_price',
-    'label' => 'Wholesale Price',
-    'required' => 0,
-    'settings' => array(
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'commerce_price',
-      'settings' => array(
-        'currency_code' => 'default',
-      ),
-      'type' => 'commerce_price_full',
       'weight' => 11,
     ),
   );
@@ -1021,7 +974,6 @@ function checkout_shipping_taxes_field_default_field_instances() {
   t('Subtitle');
   t('Telefonnummer');
   t('Weight');
-  t('Wholesale Price');
 
   return $field_instances;
 }

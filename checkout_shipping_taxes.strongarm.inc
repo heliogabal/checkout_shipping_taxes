@@ -96,7 +96,7 @@ Hiermit senden wir Ihnen unsere Rechnung.';
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_pdf_css_files';
   $strongarm->value = array(
-    0 => 'profiles/inkota_shop/themes/inkshop_theme/css/pdf.css',
+    0 => 'profiles/inkota_shop/themes/inkshop/css/pdf.css',
   );
   $export['commerce_billy_pdf_css_files'] = $strongarm;
 
@@ -104,7 +104,7 @@ Hiermit senden wir Ihnen unsere Rechnung.';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_pdf_logo';
-  $strongarm->value = 'profiles/inkota_shop/themes/inkshop_theme/images/rechnung_sidebar.png';
+  $strongarm->value = 'profiles/inkota_shop/themes/inkshop/images/rechnung_sidebar.png';
   $export['commerce_billy_pdf_logo'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -186,7 +186,7 @@ i.A. INKOTA-netzwerk
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_customer_profile_billing_addressbook';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['commerce_customer_profile_billing_addressbook'] = $strongarm;
 
   $strongarm = new stdClass();

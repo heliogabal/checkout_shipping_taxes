@@ -262,29 +262,5 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_wholesale_price'
-  $field_bases['field_wholesale_price'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_wholesale_price',
-    'foreign keys' => array(),
-    'global_block_settings' => 1,
-    'indexes' => array(
-      'currency_price' => array(
-        0 => 'amount',
-        1 => 'currency_code',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'commerce_price',
-    'settings' => array(
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'commerce_price',
-  );
-
   return $field_bases;
 }
