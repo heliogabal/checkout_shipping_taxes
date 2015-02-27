@@ -1,7 +1,7 @@
 name = Checkout Shipping Taxes
 core = 7.x
 package = Features
-version = 7.x-1.17-alpha8
+version = 7.x-1.17-alpha9
 project = checkout_shipping_taxes
 dependencies[] = addressfield
 dependencies[] = commerce
@@ -95,6 +95,8 @@ features[commerce_checkout_pane][] = extra_pane__node__1264
 features[commerce_checkout_pane][] = extra_pane__node__1420
 features[commerce_checkout_pane][] = paypal_ec_review
 features[commerce_checkout_pane][] = stock_validation_checkout_pane
+features[commerce_customer_type][] = billing
+features[commerce_customer_type][] = shipping
 features[commerce_flat_rate_services][] = briefsendung_bis_1000g
 features[commerce_flat_rate_services][] = briefsendung_bis_500g
 features[commerce_flat_rate_services][] = deutschland_p_ckchen_bis_2000g

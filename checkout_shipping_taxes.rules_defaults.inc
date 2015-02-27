@@ -791,7 +791,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "stock_control" ],
-      "REQUIRES" : [ "rules", "commerce_stock" ],
+      "REQUIRES" : [ "rules", "rules_i18n", "commerce_stock" ],
       "ON" : { "commerce_stock_add_to_cart_check_product" : [] },
       "IF" : [
         { "data_is" : { "data" : [ "commerce-product:commerce-stock" ], "value" : "50" } }
@@ -812,7 +812,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "custom" ],
-      "REQUIRES" : [ "commerce_order", "rules", "commerce_checkout" ],
+      "REQUIRES" : [ "commerce_order", "rules_i18n", "rules", "commerce_checkout" ],
       "ON" : { "commerce_checkout_complete" : [] },
       "IF" : [
         { "commerce_order_contains_product_type" : {
@@ -839,7 +839,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Email, wenn Bestand 50 Expemplare",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules" ],
+      "REQUIRES" : [ "rules", "rules_i18n" ],
       "ON" : { "process_checkout_page" : [] },
       "IF" : [
         { "data_is" : {
