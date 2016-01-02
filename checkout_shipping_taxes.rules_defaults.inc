@@ -9,6 +9,168 @@
  */
 function checkout_shipping_taxes_default_rules_configuration() {
   $items = array();
+  $items['commerce_payment_bank_transfer'] = entity_import('rules_config', '{ "commerce_payment_bank_transfer" : {
+      "LABEL" : "Auf Rechnung",
+      "PLUGIN" : "reaction rule",
+      "WEIGHT" : "-10",
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce Payment" ],
+      "REQUIRES" : [ "commerce_payment" ],
+      "ON" : { "commerce_payment_methods" : [] },
+      "DO" : [
+        { "commerce_payment_enable_bank_transfer" : {
+            "commerce_order" : [ "commerce-order" ],
+            "payment_method" : { "value" : {
+                "method_id" : "bank_transfer",
+                "settings" : {
+                  "details" : {
+                    "account_owner" : "INKOTA-netzwerk e.V.",
+                    "account_number" : "",
+                    "account_iban" : "DE06 3506 0190 1555 0000 10",
+                    "bank_code_appellation" : "",
+                    "bank_code" : "",
+                    "account_swift" : "GENODED1DKD",
+                    "account_bank" : "KD-Bank",
+                    "account_branch" : ""
+                  },
+                  "subject_oid" : 0,
+                  "policy" : "Bitte \\u00fcberweisen Sie den f\\u00e4lligen Betrag auf unser Konto. Sobald der Betrag bei uns eingegangen ist, versenden wir Ihre Bestellung."
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_payment_paypal_ec'] = entity_import('rules_config', '{ "commerce_payment_paypal_ec" : {
+      "LABEL" : "PayPal Express Checkout",
+      "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce Payment" ],
+      "REQUIRES" : [ "commerce_payment" ],
+      "ON" : { "commerce_payment_methods" : [] },
+      "DO" : [
+        { "commerce_payment_enable_paypal_ec" : {
+            "commerce_order" : [ "commerce-order" ],
+            "payment_method" : "paypal_ec"
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_payment_paypal_wps'] = entity_import('rules_config', '{ "commerce_payment_paypal_wps" : {
+      "LABEL" : "PayPal WPS",
+      "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce Payment" ],
+      "REQUIRES" : [ "commerce_payment" ],
+      "ON" : { "commerce_payment_methods" : [] },
+      "DO" : [
+        { "commerce_payment_enable_paypal_wps" : {
+            "commerce_order" : [ "commerce-order" ],
+            "payment_method" : { "value" : {
+                "method_id" : "paypal_wps",
+                "settings" : {
+                  "business" : "rhalbmann@gmail.com",
+                  "currency_code" : "EUR",
+                  "allow_supported_currencies" : 0,
+                  "language" : "DE",
+                  "server" : "sandbox",
+                  "payment_action" : "sale",
+                  "ipn_logging" : "full_ipn",
+                  "receiver_emails" : "",
+                  "ipn_create_billing_profile" : 0,
+                  "show_payment_instructions" : 0
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_shipping_rate_briefsendung_bis_50g'] = entity_import('rules_config', '{ "commerce_shipping_rate_briefsendung_bis_50g" : {
+      "LABEL" : "Rate Briefsendung bis 50g",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "DE"
+          }
+        },
+        { "AND" : [
+            { "NOT commerce_physical_rules_order_weight_comparison" : {
+                "commerce_order" : [ "commerce_order" ],
+                "operator" : "\\u003C=",
+                "value" : "0",
+                "unit" : "g"
+              }
+            },
+            { "commerce_physical_rules_order_weight_comparison" : {
+                "commerce_order" : [ "commerce_order" ],
+                "operator" : "\\u003C=",
+                "value" : "50",
+                "unit" : "g"
+              }
+            }
+          ]
+        }
+      ],
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "deutschland_briefsendung_bis_50g",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_shipping_rate_deutschland_paket_bis_5000g'] = entity_import('rules_config', '{ "commerce_shipping_rate_deutschland_paket_bis_5000g" : {
+      "LABEL" : "Rate Deutschland Paket bis 5000g",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "DE"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003E",
+            "value" : "1.98",
+            "unit" : "kg"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "5",
+            "unit" : "kg"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "deutschland_paeckchen_bis_5kg",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
   $items['commerce_shipping_service_briefsendung_bis_1000g'] = entity_import('rules_config', '{ "commerce_shipping_service_briefsendung_bis_1000g" : {
       "LABEL" : "Rate Briefsendung bis 1000g",
       "PLUGIN" : "rule",
@@ -65,7 +227,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
             { "NOT commerce_physical_rules_order_weight_comparison" : {
                 "commerce_order" : [ "commerce_order" ],
                 "operator" : "\\u003C=",
-                "value" : "0",
+                "value" : "51",
                 "unit" : "g"
               }
             },
@@ -82,6 +244,21 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_shipping_service_rate_order" : {
             "shipping_service_name" : "briefsendung_bis_500g",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_shipping_service_deutschland_briefsendung_bis_50g'] = entity_import('rules_config', '{ "commerce_shipping_service_deutschland_briefsendung_bis_50g" : {
+      "LABEL" : "Rate Deutschland Briefsendung bis 50g",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "type" : "commerce_order", "label" : "Reihenfolge" } },
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "deutschland_briefsendung_bis_50g",
             "commerce_order" : [ "commerce-order" ]
           }
         }
@@ -126,6 +303,21 @@ function checkout_shipping_taxes_default_rules_configuration() {
       ]
     }
   }');
+  $items['commerce_shipping_service_deutschland_paeckchen_bis_5kg'] = entity_import('rules_config', '{ "commerce_shipping_service_deutschland_paeckchen_bis_5kg" : {
+      "LABEL" : "Rate Deutschland Paket bis 5kg",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "type" : "commerce_order", "label" : "Reihenfolge" } },
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "deutschland_paeckchen_bis_5kg",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
   $items['commerce_shipping_service_deutschland_paket_bis_10000g'] = entity_import('rules_config', '{ "commerce_shipping_service_deutschland_paket_bis_10000g" : {
       "LABEL" : "Rate Deutschland Paket bis 10000g",
       "PLUGIN" : "rule",
@@ -143,14 +335,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "1.98",
+            "value" : "5",
             "unit" : "kg"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "9.5",
+            "value" : "9.9",
             "unit" : "kg"
           }
         }

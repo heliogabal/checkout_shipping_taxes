@@ -10,7 +10,7 @@
 function checkout_shipping_taxes_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'commerce_customer_address'
+  // Exported field_base: 'commerce_customer_address'.
   $field_bases['commerce_customer_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -19,7 +19,6 @@ function checkout_shipping_taxes_field_default_field_bases() {
       0 => 'commerce_customer_profile',
     ),
     'field_name' => 'commerce_customer_address',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'addressfield',
@@ -28,7 +27,7 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'commerce_price'
+  // Exported field_base: 'commerce_price'.
   $field_bases['commerce_price'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -37,7 +36,6 @@ function checkout_shipping_taxes_field_default_field_bases() {
       0 => 'commerce_product',
     ),
     'field_name' => 'commerce_price',
-    'foreign keys' => array(),
     'indexes' => array(
       'currency_price' => array(
         0 => 'amount',
@@ -51,7 +49,7 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'commerce_stock'
+  // Exported field_base: 'commerce_stock'.
   $field_bases['commerce_stock'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -60,7 +58,6 @@ function checkout_shipping_taxes_field_default_field_bases() {
       0 => 'commerce_product',
     ),
     'field_name' => 'commerce_stock',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
@@ -73,7 +70,7 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'number_decimal',
   );
 
-  // Exported field_base: 'commerce_stock_override'
+  // Exported field_base: 'commerce_stock_override'.
   $field_bases['commerce_stock_override'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -82,7 +79,6 @@ function checkout_shipping_taxes_field_default_field_bases() {
       0 => 'commerce_product',
     ),
     'field_name' => 'commerce_stock_override',
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -101,14 +97,13 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_physical_weight'
+  // Exported field_base: 'field_physical_weight'.
   $field_bases['field_physical_weight'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_physical_weight',
-    'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(
       'weight' => array(
@@ -124,21 +119,13 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'physical_weight',
   );
 
-  // Exported field_base: 'field_product_image'
+  // Exported field_base: 'field_product_image'.
   $field_bases['field_product_image'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_product_image',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -154,21 +141,13 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_product_pdf'
+  // Exported field_base: 'field_product_pdf'.
   $field_bases['field_product_pdf'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_product_pdf',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -185,21 +164,13 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_product_subtitle'
+  // Exported field_base: 'field_product_subtitle'.
   $field_bases['field_product_subtitle'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_product_subtitle',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -214,14 +185,13 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_product_tax'
+  // Exported field_base: 'field_product_tax'.
   $field_bases['field_product_tax'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_product_tax',
-    'foreign keys' => array(),
     'global_block_settings' => 1,
     'indexes' => array(),
     'locked' => 0,
@@ -233,21 +203,13 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_telefonnummer'
+  // Exported field_base: 'field_telefonnummer'.
   $field_bases['field_telefonnummer'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_telefonnummer',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -260,6 +222,29 @@ function checkout_shipping_taxes_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_wholesale_price'.
+  $field_bases['field_wholesale_price'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_wholesale_price',
+    'global_block_settings' => 1,
+    'indexes' => array(
+      'currency_price' => array(
+        0 => 'amount',
+        1 => 'currency_code',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'commerce_price',
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'commerce_price',
   );
 
   return $field_bases;

@@ -10,7 +10,8 @@
 function checkout_shipping_taxes_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'commerce_customer_profile-billing-commerce_customer_address'
+  // Exported field_instance:
+  // 'commerce_customer_profile-billing-commerce_customer_address'.
   $field_instances['commerce_customer_profile-billing-commerce_customer_address'] = array(
     'bundle' => 'billing',
     'default_value' => NULL,
@@ -85,7 +86,8 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_customer_profile-billing-field_telefonnummer'
+  // Exported field_instance:
+  // 'commerce_customer_profile-billing-field_telefonnummer'.
   $field_instances['commerce_customer_profile-billing-field_telefonnummer'] = array(
     'bundle' => 'billing',
     'default_value' => NULL,
@@ -125,7 +127,8 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_customer_profile-shipping-commerce_customer_address'
+  // Exported field_instance:
+  // 'commerce_customer_profile-shipping-commerce_customer_address'.
   $field_instances['commerce_customer_profile-shipping-commerce_customer_address'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -230,7 +233,8 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_customer_profile-shipping-field_telefonnummer'
+  // Exported field_instance:
+  // 'commerce_customer_profile-shipping-field_telefonnummer'.
   $field_instances['commerce_customer_profile-shipping-field_telefonnummer'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -270,7 +274,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-commerce_price'
+  // Exported field_instance: 'commerce_product-product-commerce_price'.
   $field_instances['commerce_product-product-commerce_price'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -390,7 +394,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-commerce_stock'
+  // Exported field_instance: 'commerce_product-product-commerce_stock'.
   $field_instances['commerce_product-product-commerce_stock'] = array(
     'bundle' => 'product',
     'default_value' => array(
@@ -466,7 +470,8 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-commerce_stock_override'
+  // Exported field_instance:
+  // 'commerce_product-product-commerce_stock_override'.
   $field_instances['commerce_product-product-commerce_stock_override'] = array(
     'bundle' => 'product',
     'default_value' => array(
@@ -532,7 +537,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-field_physical_weight'
+  // Exported field_instance: 'commerce_product-product-field_physical_weight'.
   $field_instances['commerce_product-product-field_physical_weight'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -598,7 +603,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-field_product_image'
+  // Exported field_instance: 'commerce_product-product-field_product_image'.
   $field_instances['commerce_product-product-field_product_image'] = array(
     'bundle' => 'product',
     'deleted' => 0,
@@ -708,7 +713,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-field_product_pdf'
+  // Exported field_instance: 'commerce_product-product-field_product_pdf'.
   $field_instances['commerce_product-product-field_product_pdf'] = array(
     'bundle' => 'product',
     'deleted' => 0,
@@ -803,7 +808,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-field_product_subtitle'
+  // Exported field_instance: 'commerce_product-product-field_product_subtitle'.
   $field_instances['commerce_product-product-field_product_subtitle'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -872,7 +877,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-field_product_tax'
+  // Exported field_instance: 'commerce_product-product-field_product_tax'.
   $field_instances['commerce_product-product-field_product_tax'] = array(
     'bundle' => 'product',
     'default_value' => array(
@@ -962,6 +967,69 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'commerce_product-product-field_wholesale_price'.
+  $field_instances['commerce_product-product-field_wholesale_price'] = array(
+    'bundle' => 'product',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'add_to_cart_confirmation_view' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'commerce_product_in_cart' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_aehnliche_produkte' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'node_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'field_wholesale_price',
+    'label' => 'Wholesale Price',
+    'required' => 0,
+    'settings' => array(
+      'exclude_cv' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'commerce_price',
+      'settings' => array(
+        'currency_code' => 'default',
+      ),
+      'type' => 'commerce_price_full',
+      'weight' => 11,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
@@ -974,6 +1042,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
   t('Subtitle');
   t('Telefonnummer');
   t('Weight');
+  t('Wholesale Price');
 
   return $field_instances;
 }

@@ -46,11 +46,11 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
   $panes['checkout_donate'] = array(
     'page' => 'checkout',
     'fieldset' => 1,
+    'enabled' => 1,
     'pane_id' => 'checkout_donate',
     'collapsible' => 0,
     'collapsed' => 0,
     'weight' => -19,
-    'enabled' => 1,
     'review' => 1,
   );
 
@@ -201,9 +201,9 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
 }
 
 /**
- * Implements hook_commerce_shipping_service_info().
+ * Implements hook_commerce_flat_rate_default_services().
  */
-function checkout_shipping_taxes_commerce_shipping_service_info() {
+function checkout_shipping_taxes_commerce_flat_rate_default_services() {
   $items = array(
     'briefsendung_bis_1000g' => array(
       'name' => 'briefsendung_bis_1000g',
@@ -223,7 +223,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'module' => 'commerce_flat_rate',
       'title' => 'Deutschland Briefsendung bis 1000g',
       'base_rate' => array(
-        'amount' => 300,
+        'amount' => 330,
         'currency_code' => 'EUR',
         'data' => array(),
       ),
@@ -249,6 +249,32 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'module' => 'commerce_flat_rate',
       'title' => 'Deutschland Briefsendung bis 500g',
       'base_rate' => array(
+        'amount' => 250,
+        'currency_code' => 'EUR',
+        'data' => array(),
+      ),
+      'data' => array(),
+      'admin_list' => TRUE,
+      'is_features' => TRUE,
+    ),
+    'deutschland_briefsendung_bis_50g' => array(
+      'name' => 'deutschland_briefsendung_bis_50g',
+      'base' => 'deutschland_briefsendung_bis_50g',
+      'display_title' => 'Versandkostenpauschale',
+      'description' => '',
+      'shipping_method' => 'flat_rate',
+      'rules_component' => TRUE,
+      'price_component' => 'flat_rate_deutschland_briefsendung_bis_50g',
+      'weight' => 12,
+      'callbacks' => array(
+        'rate' => 'commerce_flat_rate_service_rate_order',
+        'details_form' => 'deutschland_briefsendung_bis_50g_details_form',
+        'details_form_validate' => 'deutschland_briefsendung_bis_50g_details_form_validate',
+        'details_form_submit' => 'deutschland_briefsendung_bis_50g_details_form_submit',
+      ),
+      'module' => 'commerce_flat_rate',
+      'title' => 'Deutschland Briefsendung bis 50g',
+      'base_rate' => array(
         'amount' => 200,
         'currency_code' => 'EUR',
         'data' => array(),
@@ -265,7 +291,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_deutschland_p_ckchen_bis_2000g',
-      'weight' => 13,
+      'weight' => 15,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'deutschland_p_ckchen_bis_2000g_details_form',
@@ -283,6 +309,32 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
+    'deutschland_paeckchen_bis_5kg' => array(
+      'name' => 'deutschland_paeckchen_bis_5kg',
+      'base' => 'deutschland_paeckchen_bis_5kg',
+      'display_title' => 'Versandkostenpauschale',
+      'description' => '',
+      'shipping_method' => 'flat_rate',
+      'rules_component' => TRUE,
+      'price_component' => 'flat_rate_deutschland_paeckchen_bis_5kg',
+      'weight' => 13,
+      'callbacks' => array(
+        'rate' => 'commerce_flat_rate_service_rate_order',
+        'details_form' => 'deutschland_paeckchen_bis_5kg_details_form',
+        'details_form_validate' => 'deutschland_paeckchen_bis_5kg_details_form_validate',
+        'details_form_submit' => 'deutschland_paeckchen_bis_5kg_details_form_submit',
+      ),
+      'module' => 'commerce_flat_rate',
+      'title' => 'Deutschland Paket bis 5kg',
+      'base_rate' => array(
+        'amount' => 750,
+        'currency_code' => 'EUR',
+        'data' => array(),
+      ),
+      'data' => array(),
+      'admin_list' => TRUE,
+      'is_features' => TRUE,
+    ),
     'deutschland_paket_bis_10000g' => array(
       'name' => 'deutschland_paket_bis_10000g',
       'base' => 'deutschland_paket_bis_10000g',
@@ -291,7 +343,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_deutschland_paket_bis_10000g',
-      'weight' => 12,
+      'weight' => 14,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'deutschland_paket_bis_10000g_details_form',
@@ -299,9 +351,9 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
         'details_form_submit' => 'deutschland_paket_bis_10000g_details_form_submit',
       ),
       'module' => 'commerce_flat_rate',
-      'title' => 'Deutschland Paket bis 10000g',
+      'title' => 'Deutschland Paket bis 10kg',
       'base_rate' => array(
-        'amount' => 800,
+        'amount' => 850,
         'currency_code' => 'EUR',
         'data' => array(),
       ),
@@ -317,7 +369,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_1000g',
-      'weight' => 14,
+      'weight' => 16,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_1000g_details_form',
@@ -343,7 +395,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_500g',
-      'weight' => 15,
+      'weight' => 17,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_500g_details_form',
@@ -369,7 +421,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_50g',
-      'weight' => 16,
+      'weight' => 18,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_50g_details_form',
@@ -395,7 +447,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_p_ckchen_bis_2000g',
-      'weight' => 18,
+      'weight' => 20,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_p_ckchen_bis_2000g_details_form',
@@ -421,7 +473,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_paket_bis_5000g',
-      'weight' => 17,
+      'weight' => 19,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_paket_bis_5000g_details_form',
@@ -447,7 +499,7 @@ function checkout_shipping_taxes_commerce_shipping_service_info() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_versandkosten_inklusive',
-      'weight' => 19,
+      'weight' => 21,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'versandkosten_inklusive_details_form',

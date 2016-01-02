@@ -23,7 +23,7 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm->name = 'commerce_billy_invoice_nr_last';
   $strongarm->value = array(
     'year' => '2015',
-    'id' => 1,
+    'id' => 2,
   );
   $export['commerce_billy_invoice_nr_last'] = $strongarm;
 
