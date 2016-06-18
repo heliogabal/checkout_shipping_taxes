@@ -9,6 +9,18 @@
  */
 function checkout_shipping_taxes_default_rules_configuration() {
   $items = array();
+  $items['checkout_shipping_taxes_check_if_the_product_has_19_vat'] = entity_import('rules_config', '{ "checkout_shipping_taxes_check_if_the_product_has_19_vat" : {
+      "LABEL" : "Check if the Product has 19% VAT",
+      "PLUGIN" : "and",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules" ],
+      "USES VARIABLES" : { "product" : { "label" : "Product", "type" : "commerce_product" } },
+      "AND" : [
+        { "entity_has_field" : { "entity" : [ "product" ], "field" : "field_product_tax" } },
+        { "data_is" : { "data" : [ "product:field-product-tax" ], "value" : "19" } }
+      ]
+    }
+  }');
   $items['commerce_payment_bank_transfer'] = entity_import('rules_config', '{ "commerce_payment_bank_transfer" : {
       "LABEL" : "Auf Rechnung",
       "PLUGIN" : "reaction rule",
@@ -34,7 +46,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
                     "account_branch" : ""
                   },
                   "subject_oid" : 0,
-                  "policy" : "Bitte \\u00fcberweisen Sie den f\\u00e4lligen Betrag auf unser Konto. Sobald der Betrag bei uns eingegangen ist, versenden wir Ihre Bestellung."
+                  "policy" : ""
                 }
               }
             }
@@ -652,7 +664,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "USES VARIABLES" : { "commerce_line_item" : { "label" : "Line item", "type" : "commerce_line_item" } },
       "IF" : [
         { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_product" } },
-        { "component_rules_check_if_the_product_has_19_vat" : [] },
+        { "component_checkout_shipping_taxes_check_if_the_product_has_19_vat" : { "product" : [ "commerce-line-item:commerce-product" ] } },
         { "component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_unit_price" } },
         { "NOT user_has_role" : {
@@ -685,8 +697,18 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "PLUGIN" : "rule",
       "OWNER" : "rules",
       "TAGS" : [ "Commerce Tax", "vat" ],
-      "USES VARIABLES" : { "commerce_line_item" : { "label" : "Position", "type" : "commerce_line_item" } },
-      "DO" : []
+      "REQUIRES" : [ "commerce_tax" ],
+      "USES VARIABLES" : { "commerce_line_item" : { "type" : "commerce_line_item", "label" : "Position" } },
+      "DO" : [
+        { "commerce_tax_rate_apply" : {
+            "USING" : {
+              "commerce_line_item" : [ "commerce-line-item" ],
+              "tax_rate_name" : "remove_ust_7_for_non_eu_clients"
+            },
+            "PROVIDE" : { "applied_tax" : { "applied_tax" : "Applied tax" } }
+          }
+        }
+      ]
     }
   }');
   $items['commerce_tax_rate_remove_ust_shop_7_for_non_eu_clients'] = entity_import('rules_config', '{ "commerce_tax_rate_remove_ust_shop_7_for_non_eu_clients" : {
@@ -705,6 +727,90 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "TAGS" : [ "Commerce Tax", "vat" ],
       "USES VARIABLES" : { "commerce_line_item" : { "label" : "Position", "type" : "commerce_line_item" } },
       "DO" : []
+    }
+  }');
+  $items['rules_10_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_10_rabatt_dossier_und_texte" : {
+      "LABEL" : "10% Rabatt Dossier und Texte",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "custom", "rabatt" ],
+      "REQUIRES" : [
+        "commerce_rules_extra",
+        "rules",
+        "commerce_line_item",
+        "commerce_product_reference"
+      ],
+      "ON" : { "commerce_product_calculate_sell_price" : [] },
+      "IF" : [
+        { "commerce_rules_extra_rules_condition_has_terms" : {
+            "line_item" : [ "commerce-line-item" ],
+            "voc_name" : "type",
+            "term_id" : { "value" : { "163" : "163", "164" : "164" } },
+            "product_display" : 1,
+            "term_operator" : "IOO"
+          }
+        },
+        { "data_is" : {
+            "data" : [ "commerce-line-item:quantity" ],
+            "op" : "\\u003E",
+            "value" : "9"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_line_item_unit_price_multiply" : {
+            "commerce_line_item" : [ "commerce_line_item" ],
+            "amount" : "0.90",
+            "component_name" : "discount",
+            "round_mode" : "1"
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_5_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_5_rabatt_dossier_und_texte" : {
+      "LABEL" : "5% Rabatt Dossier und Texte",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "custom", "rabatt" ],
+      "REQUIRES" : [
+        "commerce_rules_extra",
+        "rules",
+        "commerce_line_item",
+        "commerce_product_reference"
+      ],
+      "ON" : { "commerce_product_calculate_sell_price" : [] },
+      "IF" : [
+        { "commerce_rules_extra_rules_condition_has_terms" : {
+            "line_item" : [ "commerce-line-item" ],
+            "voc_name" : "type",
+            "term_id" : { "value" : { "163" : "163", "164" : "164" } },
+            "product_display" : 1,
+            "term_operator" : "IOO"
+          }
+        },
+        { "data_is" : {
+            "data" : [ "commerce-line-item:quantity" ],
+            "op" : "\\u003E",
+            "value" : "4"
+          }
+        },
+        { "data_is" : {
+            "data" : [ "commerce-line-item:quantity" ],
+            "op" : "\\u003C",
+            "value" : "10"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_line_item_unit_price_multiply" : {
+            "commerce_line_item" : [ "commerce-line-item" ],
+            "amount" : "0.95",
+            "component_name" : "discount",
+            "round_mode" : "1"
+          }
+        }
+      ]
     }
   }');
   $items['rules_auto_add_shipping_service'] = entity_import('rules_config', '{ "rules_auto_add_shipping_service" : {
@@ -727,39 +833,6 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_shipping_rate_apply" : {
             "commerce_order" : [ "commerce_order" ],
             "shipping_service_name" : [ "" ]
-          }
-        }
-      ]
-    }
-  }');
-  $items['rules_check_if_no_shipping_country'] = entity_import('rules_config', '{ "rules_check_if_no_shipping_country" : {
-      "LABEL" : "Check if no shipping country",
-      "PLUGIN" : "or",
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules" ],
-      "OR" : [ { "data_is_empty" : { "data" : [ "site:current-cart-order" ] } } ]
-    }
-  }');
-  $items['rules_check_if_order_contains_only_non_shippable_products'] = entity_import('rules_config', '{ "rules_check_if_order_contains_only_non_shippable_products" : {
-      "LABEL" : "Check if order contains only non-shippable products",
-      "PLUGIN" : "and",
-      "OWNER" : "rules",
-      "TAGS" : [ "shipping" ],
-      "REQUIRES" : [ "commerce_order" ],
-      "USES VARIABLES" : { "order" : { "label" : "Order", "type" : "commerce_order" } },
-      "AND" : [
-        { "commerce_order_contains_product_type" : {
-            "commerce_order" : [ "order" ],
-            "product_type" : { "value" : { "recurring" : "recurring" } },
-            "operator" : "\\u003E=",
-            "value" : "1"
-          }
-        },
-        { "NOT commerce_order_contains_product_type" : {
-            "commerce_order" : [ "order" ],
-            "product_type" : { "value" : { "product" : "product" } },
-            "operator" : "\\u003E=",
-            "value" : "1"
           }
         }
       ]
@@ -991,7 +1064,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "mail" : {
             "to" : "rhalbmann@gmail.com",
-            "subject" : "INKOTA Shop: Bestand pr\\u00fcfen",
+            "subject" : "INKOTA Shop: [commerce-product:title] Bestand pr\\u00fcfen",
             "message" : "SKU: [commerce-product:sku]\\r\\nTitel: [commerce-product:title]\\r\\nBestand: [commerce-product:commerce-stock-int]\\r\\n\\r\\nBestand korrigieren: [commerce-product:edit-url]",
             "language" : [ "" ]
           }
@@ -1002,10 +1075,11 @@ function checkout_shipping_taxes_default_rules_configuration() {
   $items['rules_email_bei_spende_verschicken'] = entity_import('rules_config', '{ "rules_email_bei_spende_verschicken" : {
       "LABEL" : "Email bei Spende verschicken",
       "PLUGIN" : "reaction rule",
+      "WEIGHT" : "10",
       "OWNER" : "rules",
       "TAGS" : [ "custom" ],
-      "REQUIRES" : [ "commerce_order", "rules_i18n", "rules", "commerce_checkout" ],
-      "ON" : { "commerce_checkout_complete" : [] },
+      "REQUIRES" : [ "commerce_order", "rules", "rules_i18n", "entity" ],
+      "ON" : { "commerce_order_update" : [] },
       "IF" : [
         { "commerce_order_contains_product_type" : {
             "commerce_order" : [ "commerce_order" ],
@@ -1013,13 +1087,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "operator" : "\\u003E=",
             "value" : "1"
           }
-        }
+        },
+        { "data_is" : { "data" : [ "commerce-order:state" ], "value" : "completed" } }
       ],
       "DO" : [
         { "mail" : {
             "to" : "rhalbmann@gmail.com",
-            "subject" : "Spende an INKOTA",
-            "message" : "Es wurde gespendet!\\r\\n\\r\\nBestellnummer: [commerce-order:order-number]\\r\\nSpender: [commerce-order:owner]\\r\\nE-Mail: [commerce-order:mail]\\r\\n\\r\\nAdresse: [commerce-order:commerce_customer_billing]",
+            "subject" : "Neue webshop-Spende an INKOTA",
+            "message" : "Es wurde gespendet!\\r\\n\\r\\nRechnungsnummer: [commerce-order:order-number]\\r\\nRechnungsdatum: [commerce-order:field-commerce-billy-i-date]\\r\\nBestellnummer: [commerce-order:order-id]\\r\\n\\r\\nSpender: [commerce-order:owner]\\r\\nE-Mail: [commerce-order:mail]\\r\\n\\r\\nSpender Adresse:\\r\\n[message:message-commerce-order:commerce-customer-billing:commerce-customer-address:name_line]\\u003Cbr \\/\\u003E\\r\\n[message:message-commerce-order:commerce-customer-billing:commerce-customer-address:organisation_name]\\u003Cbr \\/\\u003E\\r\\n[message:message-commerce-order:commerce-customer-billing:commerce-customer-address:thoroughfare]\\u003Cbr \\/\\u003E\\r\\n[message:message-commerce-order:commerce-customer-billing:commerce-customer-address:postal_code] [message:message-commerce-order:commerce-customer-billing:commerce-customer-address:locality]\\r\\n\\r\\nBestellung: [commerce-order:commerce_line_items]",
             "from" : "[commerce-order:mail]",
             "language" : [ "commerce-order:state" ]
           }
@@ -1027,142 +1102,21 @@ function checkout_shipping_taxes_default_rules_configuration() {
       ]
     }
   }');
-  $items['rules_email_wenn_bestand_50_expemplare'] = entity_import('rules_config', '{ "rules_email_wenn_bestand_50_expemplare" : {
-      "LABEL" : "Email, wenn Bestand 50 Expemplare",
+  $items['rules_set_order_status_to_paid_paypal_when_checkout_complete'] = entity_import('rules_config', '{ "rules_set_order_status_to_paid_paypal_when_checkout_complete" : {
+      "LABEL" : "Set Order Status to \\u0022charged\\u0022 when checkout complete",
       "PLUGIN" : "reaction rule",
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "rules_i18n" ],
-      "ON" : { "process_checkout_page" : [] },
-      "IF" : [
-        { "data_is" : {
-            "data" : [ "site:current-cart-order:commerce-line-items:0:quantity" ],
-            "value" : "50"
-          }
-        }
-      ],
-      "DO" : [
-        { "mail" : {
-            "to" : "rhalbmann@gmail.com",
-            "subject" : "INKOTA Shop: Bestand pr\\u00fcfen",
-            "message" : "SKU: [commerce-product:sku]\\r\\nTitel: [commerce-product:title]\\r\\nBestand: [commerce-product:commerce-stock-int]",
-            "language" : [ "" ]
-          }
-        }
-      ]
-    }
-  }');
-  $items['rules_login_redirect_for_non_administrators'] = entity_import('rules_config', '{ "rules_login_redirect_for_non_administrators" : {
-      "LABEL" : "Login redirect for non-administrators",
-      "PLUGIN" : "reaction rule",
-      "OWNER" : "rules",
-      "TAGS" : [ "Login redirect" ],
-      "REQUIRES" : [ "rules" ],
-      "ON" : { "user_login" : [] },
-      "IF" : [
-        { "user_has_role" : {
-            "account" : [ "account" ],
-            "roles" : { "value" : { "2" : "2", "5" : "5" } }
-          }
-        }
-      ],
-      "DO" : [ { "redirect" : { "url" : "\\u003Cfront\\u003E" } } ]
-    }
-  }');
-  $items['rules_remove_vat_for_eu'] = entity_import('rules_config', '{ "rules_remove_vat_for_eu" : {
-      "LABEL" : "Remove VAT for EU",
-      "PLUGIN" : "reaction rule",
-      "OWNER" : "rules",
-      "REQUIRES" : [
-        "rules",
-        "commerce_order",
-        "commerce_tax",
-        "commerce_product_reference"
-      ],
-      "ON" : { "commerce_product_calculate_sell_price" : [] },
-      "IF" : [
-        { "AND" : [
-            { "entity_has_field" : {
-                "entity" : [ "commerce-line-item:order" ],
-                "field" : "commerce_customer_billing"
-              }
-            },
-            { "entity_has_field" : {
-                "entity" : [ "commerce-line-item:order:commerce-customer-billing" ],
-                "field" : "commerce_customer_address"
-              }
-            },
-            { "NOT data_is_empty" : { "data" : [
-                  "commerce-line-item:order:commerce-customer-billing:commerce-customer-address:country"
-                ]
-              }
-            },
-            { "commerce_order_compare_address" : {
-                "commerce_order" : [ "commerce-line-item:order" ],
-                "address_field" : "commerce_customer_billing|commerce_customer_address",
-                "address_component" : "country",
-                "value" : "CH"
-              }
-            }
-          ]
-        }
-      ],
-      "DO" : [
-        { "commerce_tax_remove_taxes" : {
-            "commerce_line_item" : [ "commerce_line_item" ],
-            "increase_base_price" : 0
-          }
-        }
-      ]
-    }
-  }');
-  $items['rules_set_body_class_on_checkout_complete'] = entity_import('rules_config', '{ "rules_set_body_class_on_checkout_complete" : {
-      "LABEL" : "Check if order contains donation",
-      "PLUGIN" : "and",
+      "WEIGHT" : "1",
       "OWNER" : "rules",
       "TAGS" : [ "Commerce Checkout" ],
-      "REQUIRES" : [ "commerce_order" ],
-      "USES VARIABLES" : { "order" : { "label" : "Bestellung", "type" : "commerce_order" } },
-      "AND" : [
-        { "commerce_order_contains_product_type" : {
-            "commerce_order" : [ "order" ],
-            "product_type" : { "value" : { "product" : "product" } },
-            "operator" : "\\u003E=",
-            "value" : "1"
-          }
-        }
-      ]
-    }
-  }');
-  $items['rules_spendenberag_als_preis_setzen'] = entity_import('rules_config', '{ "rules_spendenberag_als_preis_setzen" : {
-      "LABEL" : "Spendenberag als Preis setzen",
-      "PLUGIN" : "reaction rule",
-      "WEIGHT" : "2",
-      "OWNER" : "rules",
-      "TAGS" : [ "commerce donate" ],
-      "REQUIRES" : [ "rules", "commerce_line_item", "commerce_product_reference" ],
-      "ON" : { "commerce_product_calculate_sell_price" : [] },
+      "REQUIRES" : [ "commerce_payment", "commerce_order", "commerce_checkout" ],
+      "ON" : { "commerce_checkout_complete" : [] },
       "IF" : [
-        { "entity_has_field" : {
-            "entity" : [ "commerce-line-item" ],
-            "field" : "commerce_donate_amount"
-          }
-        }
+        { "commerce_payment_order_balance_comparison" : { "commerce_order" : [ "commerce_order" ], "value" : "0" } }
       ],
       "DO" : [
-        { "data_calc" : {
-            "USING" : {
-              "input_1" : [ "commerce-line-item:commerce-donate-amount" ],
-              "op" : "*",
-              "input_2" : "100"
-            },
-            "PROVIDE" : { "result" : { "donation_in_euro" : "Spendenbetrag in Euro" } }
-          }
-        },
-        { "commerce_line_item_unit_price_amount" : {
-            "commerce_line_item" : [ "commerce_line_item" ],
-            "amount" : [ "donation-in-euro" ],
-            "component_name" : "fee",
-            "round_mode" : "0"
+        { "commerce_order_update_status" : {
+            "commerce_order" : [ "commerce_order" ],
+            "order_status" : "cardonfile_charged"
           }
         }
       ]
@@ -1196,27 +1150,6 @@ function checkout_shipping_taxes_default_rules_configuration() {
             ]
           }
         }
-      ]
-    }
-  }');
-  $items['rules_wenn_noch_keine_email_adresse_bekannt_ist'] = entity_import('rules_config', '{ "rules_wenn_noch_keine_email_adresse_bekannt_ist" : {
-      "LABEL" : "Wenn noch keine Email-Adresse bekannt ist",
-      "PLUGIN" : "or",
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules" ],
-      "USES VARIABLES" : { "order" : { "label" : "Bestellung", "type" : "commerce_order" } },
-      "OR" : [
-        { "entity_has_field" : {
-            "entity" : [ "site:current-cart-order" ],
-            "field" : "commerce_customer_shipping"
-          }
-        },
-        { "entity_has_field" : {
-            "entity" : [ "site:current-cart-order" ],
-            "field" : "commerce_customer_address"
-          }
-        },
-        { "data_is_empty" : { "data" : [ "site:current-cart-order:mail" ] } }
       ]
     }
   }');

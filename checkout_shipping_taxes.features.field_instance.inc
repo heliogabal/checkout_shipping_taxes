@@ -57,6 +57,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'commerce_customer_profile',
+    'exclude_cv' => 0,
     'field_name' => 'commerce_customer_address',
     'label' => 'Address',
     'required' => 1,
@@ -72,30 +73,30 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'default_country' => 'DE',
         'format_handlers' => array(
           'address' => 'address',
+          'title' => 'title',
+          'organisation' => 'organisation',
           'name-full' => 'name-full',
           'address-hide-postal-code' => 0,
           'address-hide-street' => 0,
           'address-hide-country' => 0,
-          'organisation' => 0,
           'name-oneline' => 0,
           'address-optional' => 0,
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => -10,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance:
-  // 'commerce_customer_profile-billing-field_telefonnummer'.
-  $field_instances['commerce_customer_profile-billing-field_telefonnummer'] = array(
+  // Exported field_instance: 'commerce_customer_profile-billing-field_ust_id'.
+  $field_instances['commerce_customer_profile-billing-field_ust_id'] = array(
     'bundle' => 'billing',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Wenn Sie als europäisches Unternehmen eine USt-ID angeben, wird Ihnen keine MwSt. berechnet.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -104,8 +105,9 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'commerce_customer_profile',
-    'field_name' => 'field_telefonnummer',
-    'label' => 'Telefonnummer',
+    'exclude_cv' => 0,
+    'field_name' => 'field_ust_id',
+    'label' => 'USt-ID',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -120,10 +122,10 @@ function checkout_shipping_taxes_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => 40,
       ),
       'type' => 'text_textfield',
-      'weight' => 32,
+      'weight' => 4,
     ),
   );
 
@@ -174,6 +176,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'commerce_customer_profile',
+    'exclude_cv' => 0,
     'field_name' => 'commerce_customer_address',
     'label' => 'Address',
     'required' => 1,
@@ -219,58 +222,18 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'default_country' => 'DE',
         'format_handlers' => array(
           'address' => 'address',
+          'title' => 'title',
+          'organisation' => 'organisation',
           'name-full' => 'name-full',
           'address-hide-postal-code' => 0,
           'address-hide-street' => 0,
           'address-hide-country' => 0,
-          'organisation' => 0,
           'name-oneline' => 0,
           'address-optional' => 0,
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => -10,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'commerce_customer_profile-shipping-field_telefonnummer'.
-  $field_instances['commerce_customer_profile-shipping-field_telefonnummer'] = array(
-    'bundle' => 'shipping',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => -9,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'commerce_customer_profile',
-    'field_name' => 'field_telefonnummer',
-    'label' => 'Telefonnummer',
-    'required' => 0,
-    'settings' => array(
-      'exclude_cv' => FALSE,
-      'linkit' => array(
-        'enable' => 0,
-        'insert_plugin' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 31,
+      'weight' => 3,
     ),
   );
 
@@ -1040,8 +1003,9 @@ function checkout_shipping_taxes_field_default_field_instances() {
   t('Product Tax');
   t('Stock');
   t('Subtitle');
-  t('Telefonnummer');
+  t('USt-ID');
   t('Weight');
+  t('Wenn Sie als europäisches Unternehmen eine USt-ID angeben, wird Ihnen keine MwSt. berechnet.');
   t('Wholesale Price');
 
   return $field_instances;

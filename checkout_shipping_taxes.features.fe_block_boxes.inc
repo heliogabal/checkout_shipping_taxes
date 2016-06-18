@@ -22,7 +22,7 @@ function checkout_shipping_taxes_default_fe_block_boxes() {
   $fe_block_boxes->info = 'Kontoinfo Checkout';
   $fe_block_boxes->format = 'filtered_html';
   $fe_block_boxes->machine_name = 'kontoinfo';
-  $fe_block_boxes->body = '<p><strong>Kontoinhaber</strong>:<br />INKOTA-netzwerk e.V.<br /><strong>IBAN</strong>:<br />DE06 3506 0190 1555 0000 10<br /><strong>SWIFT</strong>:<br />GENODED1DKD<br /><strong>Bankinstitut</strong>:<br />KD-Bank</p>';
+  $fe_block_boxes->body = '<p><strong>Kontoinhaber</strong>:<br />INKOTA-netzwerk e.V.<br /><strong>IBAN</strong>:<br />DE06 3506 0190 1555 0000 10<br /><strong>BIC</strong>:<br />GENODED1DKD<br /><strong>Bankinstitut</strong>:<br />KD-Bank</p>';
 
   $export['kontoinfo'] = $fe_block_boxes;
 

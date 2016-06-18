@@ -22,8 +22,8 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_invoice_nr_last';
   $strongarm->value = array(
-    'year' => '2015',
-    'id' => 2,
+    'year' => '2016',
+    'id' => 47,
   );
   $export['commerce_billy_invoice_nr_last'] = $strongarm;
 
@@ -38,7 +38,7 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_invoice_nr_pattern';
-  $strongarm->value = '[date:custom:Ymd]{id}';
+  $strongarm->value = '[date:custom:Y]-{id}';
   $export['commerce_billy_invoice_nr_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -59,8 +59,22 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_mail_body';
-  $strongarm->value = 'Vielen Dank für Ihre Bestellung. 
-Hiermit senden wir Ihnen unsere Rechnung.';
+  $strongarm->value = 'Hallo [commerce-order:owner:field_user_anrede] [commerce-order:owner:name],
+
+Vielen Dank für Ihre Bestellung. 
+Wir haben Ihre Bestellung fertig gestellt und senden Ihnen nun unsere Rechnung.
+
+Bitte überweisen Sie den Rechnungsbetrag von [commerce-order:commerce_order_total] unter Angabe der Rechnungsnummer [commerce-order:order-id] auf folgendes Konto:
+
+Kontoinhaber: INKOTA-netzwerk e.V.
+IBAN: DE06 3506 0190 1555 0000 10
+BIC: GENODED1DKD
+Bankinstitut: KD-Bank
+
+Sobald der Betrag bei uns eingegangen ist, versenden wir Ihre Bestellung.
+
+Viele Grüße
+Das Team vom INKOTA webshop';
   $export['commerce_billy_mail_body'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -74,7 +88,7 @@ Hiermit senden wir Ihnen unsere Rechnung.';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_mail_from';
-  $strongarm->value = 'rhalbmann@gmail.com';
+  $strongarm->value = 'versand@inkota.de';
   $export['commerce_billy_mail_from'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -90,6 +104,15 @@ Hiermit senden wir Ihnen unsere Rechnung.';
   $strongarm->name = 'commerce_billy_mail_subject';
   $strongarm->value = 'INKOTA Shop: Ihre Rechnung';
   $export['commerce_billy_mail_subject'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_billy_mail_use_theme_registry_workaround_theme_items';
+  $strongarm->value = array(
+    'commerce_order__commerce_order__pdf' => 'commerce_order__commerce_order__pdf',
+  );
+  $export['commerce_billy_mail_use_theme_registry_workaround_theme_items'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -110,15 +133,29 @@ Hiermit senden wir Ihnen unsere Rechnung.';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_billy_pdf_order_statuses';
+  $strongarm->value = array(
+    'canceled' => 'canceled',
+    'completed' => 'completed',
+    'invoiced' => 'invoiced',
+    'mahnung_1' => 'mahnung_1',
+    'mahnung_2' => 'mahnung_2',
+    'gesperrt' => 'gesperrt',
+  );
+  $export['commerce_billy_pdf_order_statuses'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_pdf_text_settings';
   $strongarm->value = array(
     'invoice_header' => '<div class="address">INKOTA-netzwerk e.V. • Chrysanthemenstraße 1-3 • 10407 Berlin</div>
-<div class="rechnung">Rechnung</div>',
-    'invoice_location' => 'Berlin',
+',
+    'invoice_location' => 'Datum: Berlin',
     'invoice_date_format' => 'd.m.Y',
-    'invoice_text' => '<p>Vielen Dank für Ihre Bestellung. Bitte überweisen Sie den Rechnungsbetrag innerhalb von 14 Tagen unter Angabe <strong><u>Ihres Namens und unserer Rechnungsnummer</u></strong> auf unser Konto (die Bankverbindung finden Sie in der rechten Spalte).</p>
+    'invoice_text' => '<p>Vielen Dank für Ihre Bestellung. <br/>Bitte überweisen Sie den Rechnungsbetrag innerhalb von 14 Tagen unter Angabe <strong><u>Ihres Namens und unserer Rechnungsnummer</u></strong> auf unser Konto, IBAN DE06 3506 0190 1555 0000 10,  BIC:
+GENODED1DKD bei der KD-Bank.</p>
 <p>
-<p>&nbsp;</p>
 Mit freundlichen Grüßen<br />
 Alexandra Rieg<br />
 i.A. INKOTA-netzwerk
@@ -126,7 +163,7 @@ i.A. INKOTA-netzwerk
 <p>&nbsp;</p>
 
 ',
-    'invoice_footer' => '<p>P.S.: Eine unabhängige Stimme braucht eine unabhängige Finanzierung! Unterstützen Sie unsere Arbeit dauerhaft – mit einer Fördermitgliedschaft: <a href="www.inkota.de/foerdermitgliedschaft">www.inkota.de/foerdermitgliedschaft</a></p>',
+    'invoice_footer' => '<p>P.S.: Eine unabhängige Stimme braucht eine unabhängige Finanzierung! <br />Unterstützen Sie unsere Arbeit dauerhaft – mit einer Fördermitgliedschaft: <br /><a href="www.inkota.de/foerdermitgliedschaft">www.inkota.de/foerdermitgliedschaft</a></p>',
   );
   $export['commerce_billy_pdf_text_settings'] = $strongarm;
 
@@ -142,7 +179,7 @@ i.A. INKOTA-netzwerk
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_checkout_completion_message';
   $strongarm->value = array(
-    'value' => '<p>Your order number is [commerce-order:order-number]. You can <a href="[commerce-order:url]">view your order</a> on your account page when logged in.</p><p><a href="/suedlink-abo">Buy Südlink Abo.</a></p><p><a href="[site:url]">Return to the front page.</a></p><p><a href="https://inkota.de">Return to INKOTA main website</a></p>',
+    'value' => '<p>Herzlichen Dank für Ihre Bestellung!</p><p>Eine E-Mail zur Bestätigung Ihrer Bestellung Nr. [commerce-order:order-number] haben wir soeben an Sie versendet. Wenn dies Ihre erste Bestellung war, erhalten Sie außerdem eine E-Mail mit Ihren Anmeldedaten für Ihr Benutzerkonto beim INKOTA-Webshop.</p><p>Viele Grüße<br />Ihr INKOTA-Team</p><p><br />Was wollen Sie als nächstes tun?</p><p><a href="node/1422">Südlink-Abo bestellen</a></p><p><a href="/">Zurück zur Startseite des INKOTA-Webshops</a></p><p><a href="https://inkota.de">Zurück zur INKOTA-Webseite</a></p>',
     'format' => 'filtered_html',
   );
   $export['commerce_checkout_completion_message'] = $strongarm;

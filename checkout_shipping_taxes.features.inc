@@ -12,7 +12,7 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
 
   $panes['account'] = array(
     'page' => 'checkout',
-    'weight' => -18,
+    'weight' => -19,
     'pane_id' => 'account',
     'fieldset' => 1,
     'collapsible' => 0,
@@ -50,7 +50,7 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'pane_id' => 'checkout_donate',
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -19,
+    'weight' => -18,
     'review' => 1,
   );
 
@@ -60,19 +60,19 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'pane_id' => 'checkout_review',
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -18,
+    'weight' => -20,
     'enabled' => 1,
     'review' => 1,
   );
 
   $panes['commerce_checkout_pane_payment'] = array(
-    'page' => 'shipping',
-    'weight' => -18,
+    'page' => 'disabled',
+    'weight' => -19,
     'pane_id' => 'commerce_checkout_pane_payment',
     'fieldset' => 1,
     'collapsible' => 0,
     'collapsed' => 0,
-    'enabled' => 1,
+    'enabled' => 0,
     'review' => 1,
   );
 
@@ -89,7 +89,7 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
 
   $panes['commerce_payment'] = array(
     'page' => 'checkout',
-    'weight' => -14,
+    'weight' => -15,
     'pane_id' => 'commerce_payment',
     'fieldset' => 1,
     'collapsible' => 0,
@@ -104,14 +104,14 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'fieldset' => 1,
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -19,
+    'weight' => 0,
     'enabled' => 1,
     'review' => 1,
   );
 
   $panes['commerce_shipping'] = array(
     'page' => 'disabled',
-    'weight' => -18,
+    'weight' => -20,
     'review' => 0,
     'pane_id' => 'commerce_shipping',
     'fieldset' => 1,
@@ -159,20 +159,20 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'fieldset' => 1,
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -12,
+    'weight' => -14,
     'enabled' => 1,
-    'review' => 0,
+    'review' => 1,
   );
 
   $panes['extra_pane__node__1420'] = array(
     'pane_id' => 'extra_pane__node__1420',
     'page' => 'disabled',
-    'fieldset' => 0,
+    'fieldset' => 1,
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -19,
+    'weight' => -17,
     'enabled' => 0,
-    'review' => 0,
+    'review' => 1,
   );
 
   $panes['paypal_ec_review'] = array(
@@ -181,7 +181,7 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'pane_id' => 'paypal_ec_review',
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -17,
+    'weight' => -18,
     'enabled' => 0,
     'review' => 1,
   );
@@ -192,7 +192,7 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'pane_id' => 'stock_validation_checkout_pane',
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -15,
+    'weight' => -13,
     'enabled' => 1,
     'review' => 1,
   );
@@ -208,12 +208,12 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
     'briefsendung_bis_1000g' => array(
       'name' => 'briefsendung_bis_1000g',
       'base' => 'briefsendung_bis_1000g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_briefsendung_bis_1000g',
-      'weight' => 10,
+      'weight' => 0,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'briefsendung_bis_1000g_details_form',
@@ -225,21 +225,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 330,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_briefsendung_bis_1000g',
+              'price' => array(
+                'amount' => 308,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 22,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'briefsendung_bis_500g' => array(
       'name' => 'briefsendung_bis_500g',
       'base' => 'briefsendung_bis_500g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_briefsendung_bis_500g',
-      'weight' => 11,
+      'weight' => 1,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'briefsendung_bis_500g_details_form',
@@ -251,21 +289,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 250,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_briefsendung_bis_500g',
+              'price' => array(
+                'amount' => 234,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 16,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'deutschland_briefsendung_bis_50g' => array(
       'name' => 'deutschland_briefsendung_bis_50g',
       'base' => 'deutschland_briefsendung_bis_50g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_deutschland_briefsendung_bis_50g',
-      'weight' => 12,
+      'weight' => 2,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'deutschland_briefsendung_bis_50g_details_form',
@@ -277,21 +353,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 200,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_deutschland_briefsendung_bis_50g',
+              'price' => array(
+                'amount' => 187,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 13,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'deutschland_p_ckchen_bis_2000g' => array(
       'name' => 'deutschland_p_ckchen_bis_2000g',
       'base' => 'deutschland_p_ckchen_bis_2000g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_deutschland_p_ckchen_bis_2000g',
-      'weight' => 15,
+      'weight' => 5,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'deutschland_p_ckchen_bis_2000g_details_form',
@@ -303,21 +417,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 550,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_deutschland_p_ckchen_bis_2000g',
+              'price' => array(
+                'amount' => 514,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 36,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'deutschland_paeckchen_bis_5kg' => array(
       'name' => 'deutschland_paeckchen_bis_5kg',
       'base' => 'deutschland_paeckchen_bis_5kg',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_deutschland_paeckchen_bis_5kg',
-      'weight' => 13,
+      'weight' => 3,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'deutschland_paeckchen_bis_5kg_details_form',
@@ -329,21 +481,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 750,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_deutschland_paeckchen_bis_5kg',
+              'price' => array(
+                'amount' => 701,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 49,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'deutschland_paket_bis_10000g' => array(
       'name' => 'deutschland_paket_bis_10000g',
       'base' => 'deutschland_paket_bis_10000g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_deutschland_paket_bis_10000g',
-      'weight' => 14,
+      'weight' => 4,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'deutschland_paket_bis_10000g_details_form',
@@ -355,21 +545,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 850,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_deutschland_paket_bis_10000g',
+              'price' => array(
+                'amount' => 794,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 56,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'eu_briefsendung_bis_1000g' => array(
       'name' => 'eu_briefsendung_bis_1000g',
       'base' => 'eu_briefsendung_bis_1000g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_1000g',
-      'weight' => 16,
+      'weight' => 6,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_1000g_details_form',
@@ -381,21 +609,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 850,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_eu_briefsendung_bis_1000g',
+              'price' => array(
+                'amount' => 794,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 56,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'eu_briefsendung_bis_500g' => array(
       'name' => 'eu_briefsendung_bis_500g',
       'base' => 'eu_briefsendung_bis_500g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_500g',
-      'weight' => 17,
+      'weight' => 7,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_500g_details_form',
@@ -407,21 +673,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 450,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_eu_briefsendung_bis_500g',
+              'price' => array(
+                'amount' => 421,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 29,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'eu_briefsendung_bis_50g' => array(
       'name' => 'eu_briefsendung_bis_50g',
       'base' => 'eu_briefsendung_bis_50g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_briefsendung_bis_50g',
-      'weight' => 18,
+      'weight' => 8,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_briefsendung_bis_50g_details_form',
@@ -433,21 +737,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 250,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_eu_briefsendung_bis_50g',
+              'price' => array(
+                'amount' => 234,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 16,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'eu_p_ckchen_bis_2000g' => array(
       'name' => 'eu_p_ckchen_bis_2000g',
       'base' => 'eu_p_ckchen_bis_2000g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_p_ckchen_bis_2000g',
-      'weight' => 20,
+      'weight' => 10,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_p_ckchen_bis_2000g_details_form',
@@ -459,21 +801,59 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 1000,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_eu_p_ckchen_bis_2000g',
+              'price' => array(
+                'amount' => 935,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 65,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
     'eu_paket_bis_5000g' => array(
       'name' => 'eu_paket_bis_5000g',
       'base' => 'eu_paket_bis_5000g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_eu_paket_bis_5000g',
-      'weight' => 19,
+      'weight' => 9,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'eu_paket_bis_5000g_details_form',
@@ -485,9 +865,47 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 1700,
         'currency_code' => 'EUR',
-        'data' => array(),
+        'data' => array(
+          'components' => array(
+            0 => array(
+              'name' => 'flat_rate_eu_paket_bis_5000g',
+              'price' => array(
+                'amount' => 1589,
+                'currency_code' => 'EUR',
+                'data' => array(),
+              ),
+              'included' => TRUE,
+            ),
+            1 => array(
+              'name' => 'tax|mwst_reduced_de',
+              'price' => array(
+                'amount' => 111,
+                'currency_code' => 'EUR',
+                'data' => array(
+                  'tax_rate' => array(
+                    'name' => 'mwst_reduced_de',
+                    'display_title' => 'MwSt. 7%',
+                    'description' => '',
+                    'rate' => 0.07,
+                    'type' => 'vat',
+                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
+                    'default_rules_component' => 1,
+                    'price_component' => 'tax|mwst_reduced_de',
+                    'calculation_callback' => 'commerce_tax_rate_calculate',
+                    'module' => 'commerce_tax_ui',
+                    'title' => 'MwSt. 7%',
+                    'admin_list' => TRUE,
+                  ),
+                ),
+              ),
+              'included' => TRUE,
+            ),
+          ),
+        ),
       ),
-      'data' => array(),
+      'data' => array(
+        'include_tax' => 'mwst_reduced_de',
+      ),
       'admin_list' => TRUE,
       'is_features' => TRUE,
     ),
@@ -499,7 +917,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
       'price_component' => 'flat_rate_versandkosten_inklusive',
-      'weight' => 21,
+      'weight' => 11,
       'callbacks' => array(
         'rate' => 'commerce_flat_rate_service_rate_order',
         'details_form' => 'versandkosten_inklusive_details_form',
@@ -660,9 +1078,9 @@ function checkout_shipping_taxes_flag_default_flags() {
     'link_type' => 'toggle',
     'weight' => 0,
     'show_in_links' => array(
-      'administrator' => 'administrator',
-      'backoffice' => 'backoffice',
+      'administrator' => 0,
       'customer' => 0,
+      'backoffice' => 0,
       'pdf' => 0,
       'canceled' => 0,
       'checkout_pane' => 0,
@@ -673,11 +1091,11 @@ function checkout_shipping_taxes_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'show_contextual_link' => 0,
+    'api_version' => 3,
     'module' => 'checkout_shipping_taxes',
     'locked' => array(
       0 => 'name',
     ),
-    'api_version' => 3,
   );
   return $flags;
 

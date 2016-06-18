@@ -203,13 +203,13 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_telefonnummer'.
-  $field_bases['field_telefonnummer'] = array(
+  // Exported field_base: 'field_ust_id'.
+  $field_bases['field_ust_id'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_telefonnummer',
+    'field_name' => 'field_ust_id',
     'indexes' => array(
       'format' => array(
         0 => 'format',
