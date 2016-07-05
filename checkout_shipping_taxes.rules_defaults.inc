@@ -692,34 +692,6 @@ function checkout_shipping_taxes_default_rules_configuration() {
       ]
     }
   }');
-  $items['commerce_tax_rate_remove_ust_7_for_non_eu_clients'] = entity_import('rules_config', '{ "commerce_tax_rate_remove_ust_7_for_non_eu_clients" : {
-      "LABEL" : "Remove USt 7% for Non-EU clients berechnen",
-      "PLUGIN" : "rule",
-      "OWNER" : "rules",
-      "TAGS" : [ "Commerce Tax", "vat" ],
-      "REQUIRES" : [ "commerce_tax" ],
-      "USES VARIABLES" : { "commerce_line_item" : { "type" : "commerce_line_item", "label" : "Position" } },
-      "DO" : [
-        { "commerce_tax_rate_apply" : {
-            "USING" : {
-              "commerce_line_item" : [ "commerce-line-item" ],
-              "tax_rate_name" : "remove_ust_7_for_non_eu_clients"
-            },
-            "PROVIDE" : { "applied_tax" : { "applied_tax" : "Applied tax" } }
-          }
-        }
-      ]
-    }
-  }');
-  $items['commerce_tax_rate_remove_ust_shop_7_for_non_eu_clients'] = entity_import('rules_config', '{ "commerce_tax_rate_remove_ust_shop_7_for_non_eu_clients" : {
-      "LABEL" : "Remove USt SHOP 7% for Non-EU clients berechnen",
-      "PLUGIN" : "rule",
-      "OWNER" : "rules",
-      "TAGS" : [ "Commerce Tax", "vat" ],
-      "USES VARIABLES" : { "commerce_line_item" : { "label" : "Position", "type" : "commerce_line_item" } },
-      "DO" : []
-    }
-  }');
   $items['commerce_tax_rate_ust_7_shops'] = entity_import('rules_config', '{ "commerce_tax_rate_ust_7_shops" : {
       "LABEL" : "USt 7% shops berechnen",
       "PLUGIN" : "rule",
@@ -1063,7 +1035,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       ],
       "DO" : [
         { "mail" : {
-            "to" : "rhalbmann@gmail.com",
+            "to" : "versand@inkota.de",
             "subject" : "INKOTA Shop: [commerce-product:title] Bestand pr\\u00fcfen",
             "message" : "SKU: [commerce-product:sku]\\r\\nTitel: [commerce-product:title]\\r\\nBestand: [commerce-product:commerce-stock-int]\\r\\n\\r\\nBestand korrigieren: [commerce-product:edit-url]",
             "language" : [ "" ]
@@ -1092,7 +1064,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       ],
       "DO" : [
         { "mail" : {
-            "to" : "rhalbmann@gmail.com",
+            "to" : "\\u003Cknoblauch@inkota.de\\u003E,\\u003Chirschel@inkota.de\\u003E",
             "subject" : "Neue webshop-Spende an INKOTA",
             "message" : "Es wurde gespendet!\\r\\n\\r\\nRechnungsnummer: [commerce-order:order-number]\\r\\nRechnungsdatum: [commerce-order:field-commerce-billy-i-date]\\r\\nBestellnummer: [commerce-order:order-id]\\r\\n\\r\\nSpender: [commerce-order:owner]\\r\\nE-Mail: [commerce-order:mail]\\r\\n\\r\\nSpender Adresse:\\r\\n[message:message-commerce-order:commerce-customer-billing:commerce-customer-address:name_line]\\u003Cbr \\/\\u003E\\r\\n[message:message-commerce-order:commerce-customer-billing:commerce-customer-address:organisation_name]\\u003Cbr \\/\\u003E\\r\\n[message:message-commerce-order:commerce-customer-billing:commerce-customer-address:thoroughfare]\\u003Cbr \\/\\u003E\\r\\n[message:message-commerce-order:commerce-customer-billing:commerce-customer-address:postal_code] [message:message-commerce-order:commerce-customer-billing:commerce-customer-address:locality]\\r\\n\\r\\nBestellung: [commerce-order:commerce_line_items]",
             "from" : "[commerce-order:mail]",

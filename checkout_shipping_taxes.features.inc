@@ -974,34 +974,6 @@ function checkout_shipping_taxes_commerce_tax_default_rates() {
       'title' => 'MwSt. 7%',
       'admin_list' => TRUE,
     ),
-    'remove_ust_7_for_non_eu_clients' => array(
-      'name' => 'remove_ust_7_for_non_eu_clients',
-      'display_title' => 'Remove USt 7% for Non-EU clients',
-      'description' => '',
-      'rate' => 0,
-      'type' => 'vat',
-      'rules_component' => 'commerce_tax_rate_remove_ust_7_for_non_eu_clients',
-      'default_rules_component' => 1,
-      'price_component' => 'tax|remove_ust_7_for_non_eu_clients',
-      'calculation_callback' => 'commerce_tax_rate_calculate',
-      'module' => 'commerce_tax_ui',
-      'title' => 'Remove USt 7% for Non-EU clients',
-      'admin_list' => TRUE,
-    ),
-    'remove_ust_shop_7_for_non_eu_clients' => array(
-      'name' => 'remove_ust_shop_7_for_non_eu_clients',
-      'display_title' => 'Remove USt 7% for Non-EU shop clients',
-      'description' => '',
-      'rate' => 0,
-      'type' => 'vat',
-      'rules_component' => 'commerce_tax_rate_remove_ust_shop_7_for_non_eu_clients',
-      'default_rules_component' => 1,
-      'price_component' => 'tax|remove_ust_shop_7_for_non_eu_clients',
-      'calculation_callback' => 'commerce_tax_rate_calculate',
-      'module' => 'commerce_tax_ui',
-      'title' => 'Remove USt SHOP 7% for Non-EU clients',
-      'admin_list' => TRUE,
-    ),
     'ust_7_shops' => array(
       'name' => 'ust_7_shops',
       'display_title' => 'USt 7%',
@@ -1091,11 +1063,11 @@ function checkout_shipping_taxes_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'show_contextual_link' => 0,
-    'api_version' => 3,
     'module' => 'checkout_shipping_taxes',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   return $flags;
 
