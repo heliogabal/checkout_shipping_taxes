@@ -1,7 +1,7 @@
 name = Checkout Shipping Taxes
 core = 7.x
 package = Features
-version = 7.x-1.17-beta2
+version = 7.x-1.17-beta3
 project = checkout_shipping_taxes
 dependencies[] = addressfield
 dependencies[] = commerce
@@ -171,7 +171,6 @@ features[field_instance][] = commerce_product-product-field_product_pdf
 features[field_instance][] = commerce_product-product-field_product_subtitle
 features[field_instance][] = commerce_product-product-field_product_tax
 features[field_instance][] = commerce_product-product-field_wholesale_price
-features[flag][] = bezahlt_
 features[rules_config][] = checkout_shipping_taxes_check_if_the_product_has_19_vat
 features[rules_config][] = commerce_payment_bank_transfer
 features[rules_config][] = commerce_payment_paypal_ec

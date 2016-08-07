@@ -22,9 +22,9 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['commerce_payment_bank_transfer'] = entity_import('rules_config', '{ "commerce_payment_bank_transfer" : {
-      "LABEL" : "Auf Rechnung",
+      "LABEL" : "Bank Transfer",
       "PLUGIN" : "reaction rule",
-      "WEIGHT" : "-10",
+      "ACTIVE" : false,
       "OWNER" : "rules",
       "TAGS" : [ "Commerce Payment" ],
       "REQUIRES" : [ "commerce_payment" ],
@@ -32,24 +32,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_payment_enable_bank_transfer" : {
             "commerce_order" : [ "commerce-order" ],
-            "payment_method" : { "value" : {
-                "method_id" : "bank_transfer",
-                "settings" : {
-                  "details" : {
-                    "account_owner" : "INKOTA-netzwerk e.V.",
-                    "account_number" : "",
-                    "account_iban" : "DE06 3506 0190 1555 0000 10",
-                    "bank_code_appellation" : "",
-                    "bank_code" : "",
-                    "account_swift" : "GENODED1DKD",
-                    "account_bank" : "KD-Bank",
-                    "account_branch" : ""
-                  },
-                  "subject_oid" : 0,
-                  "policy" : ""
-                }
-              }
-            }
+            "payment_method" : "bank_transfer"
           }
         }
       ]
@@ -83,22 +66,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_payment_enable_paypal_wps" : {
             "commerce_order" : [ "commerce-order" ],
-            "payment_method" : { "value" : {
-                "method_id" : "paypal_wps",
-                "settings" : {
-                  "business" : "rhalbmann@gmail.com",
-                  "currency_code" : "EUR",
-                  "allow_supported_currencies" : 0,
-                  "language" : "DE",
-                  "server" : "sandbox",
-                  "payment_action" : "sale",
-                  "ipn_logging" : "full_ipn",
-                  "receiver_emails" : "",
-                  "ipn_create_billing_profile" : 0,
-                  "show_payment_instructions" : 0
-                }
-              }
-            }
+            "payment_method" : "paypal_wps"
           }
         }
       ]
@@ -621,36 +589,19 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['commerce_tax_rate_mwst_reduced_de'] = entity_import('rules_config', '{ "commerce_tax_rate_mwst_reduced_de" : {
-      "LABEL" : "MWST_reduced_de berechnen",
+      "LABEL" : "MwSt. 7% berechnen",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
       "TAGS" : [ "Commerce Tax", "vat" ],
-      "REQUIRES" : [ "rules", "commerce_line_item", "commerce_tax" ],
-      "USES VARIABLES" : { "commerce_line_item" : { "label" : "Position", "type" : "commerce_line_item" } },
-      "IF" : [
-        { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_product" } },
-        { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_unit_price" } },
-        { "component_rules_check_if_the_product_has_7_vat" : { "product" : [ "commerce-line-item:commerce-product" ] } },
-        { "OR" : [
-            { "component_rules_wenn_noch_kein_land_bekannt_ist" : [] },
-            { "component_rules_check_if_the_shipping_is_to_eu" : [] }
-          ]
-        }
-      ],
+      "REQUIRES" : [ "commerce_tax" ],
+      "USES VARIABLES" : { "commerce_line_item" : { "type" : "commerce_line_item", "label" : "Position" } },
       "DO" : [
-        { "commerce_line_item_unit_price_divide" : {
-            "commerce_line_item" : [ "commerce_line_item" ],
-            "amount" : "1.07",
-            "component_name" : "base_price",
-            "round_mode" : "1"
-          }
-        },
         { "commerce_tax_rate_apply" : {
             "USING" : {
               "commerce_line_item" : [ "commerce-line-item" ],
               "tax_rate_name" : "mwst_reduced_de"
             },
-            "PROVIDE" : { "applied_tax" : { "applied_tax" : "Angewendete Steuer" } }
+            "PROVIDE" : { "applied_tax" : { "applied_tax" : "Applied tax" } }
           }
         }
       ]
@@ -697,8 +648,18 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "PLUGIN" : "rule",
       "OWNER" : "rules",
       "TAGS" : [ "Commerce Tax", "vat" ],
-      "USES VARIABLES" : { "commerce_line_item" : { "label" : "Position", "type" : "commerce_line_item" } },
-      "DO" : []
+      "REQUIRES" : [ "commerce_tax" ],
+      "USES VARIABLES" : { "commerce_line_item" : { "type" : "commerce_line_item", "label" : "Position" } },
+      "DO" : [
+        { "commerce_tax_rate_apply" : {
+            "USING" : {
+              "commerce_line_item" : [ "commerce-line-item" ],
+              "tax_rate_name" : "ust_7_shops"
+            },
+            "PROVIDE" : { "applied_tax" : { "applied_tax" : "Applied tax" } }
+          }
+        }
+      ]
     }
   }');
   $items['rules_10_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_10_rabatt_dossier_und_texte" : {
