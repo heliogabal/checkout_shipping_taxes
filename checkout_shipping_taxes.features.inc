@@ -974,20 +974,6 @@ function checkout_shipping_taxes_commerce_tax_default_rates() {
       'title' => 'MwSt. 7%',
       'admin_list' => TRUE,
     ),
-    'ust_7_shops' => array(
-      'name' => 'ust_7_shops',
-      'display_title' => 'USt 7%',
-      'description' => 'USt 7% for shops on wholesale prices',
-      'rate' => 0.07,
-      'type' => 'vat',
-      'rules_component' => 'commerce_tax_rate_ust_7_shops',
-      'default_rules_component' => 1,
-      'price_component' => 'tax|ust_7_shops',
-      'calculation_callback' => 'commerce_tax_rate_calculate',
-      'module' => 'commerce_tax_ui',
-      'title' => 'USt 7% shops',
-      'admin_list' => TRUE,
-    ),
   );
   return $items;
 }
@@ -1025,4 +1011,62 @@ function checkout_shipping_taxes_ctools_plugin_api($module = NULL, $api = NULL) 
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
+}
+
+/**
+ * Implements hook_default_message_type().
+ */
+function checkout_shipping_taxes_default_message_type() {
+  $items = array();
+  $items['commerce_order_donation_thank_you'] = entity_import('message_type', '{
+    "name" : "commerce_order_donation_thank_you",
+    "description" : "Commerce Order: donation thank you",
+    "argument_keys" : [ "%[site:current-cart-order]" ],
+    "argument" : [],
+    "category" : "message_type",
+    "data" : {
+      "token options" : { "clear" : 0 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "de",
+    "arguments" : null,
+    "message_text" : {
+      "de" : [
+        {
+          "value" : "\\u003Cp\\u003EIhre Bestellung Nr.@{message:message-commerce-order:order-number} im [site:name]\\u003C\\/p\\u003E",
+          "format" : "filtered_html",
+          "safe_value" : "\\u003Cp\\u003EIhre Bestellung Nr.@{message:message-commerce-order:order-number} im [site:name]\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "\\u003Cp\\u003E\\u0026lt;p\\u0026gt;Hallo [current-user:field_user_anrede] [current-user:field_user_nachname],\\u0026lt;br \\/\\u0026gt;Vielen Dank f\\u00fcr Ihre Spende an INKOTA.\\u0026lt;\\/p\\u0026gt;\\u003C\\/p\\u003E\\u003Cp\\u003E\\u0026lt;p\\u0026gt;Der INKOTA-netzwerk e.V. ist beim Finanzamt als gemeinn\\u00fctzige Organisation anerkannt und von der K\\u00f6rperschaftssteuer befreit, somit k\\u00f6nnen Sie Spenden an uns von der Steuer absetzen.\\u003C\\/p\\u003E\\u003Cp\\u003EWir senden Ihnen bereits ab einer Spendensumme in H\\u00f6he von 50 Euro automatisch eine separate Spendenbescheinigung f\\u00fcr das Finanzamt zu. Wir best\\u00e4tigen, dass Ihre Zuwendung steuerbeg\\u00fcnstigter Zwecke im Sinne \\u003Ca href=\\u0022http:\\/\\/www.gesetze-im-internet.de\\/ao_1977\\/__51.html\\u0022 rel=\\u0022nofollow\\u0022 title=\\u0022Spendenquittung\\u0022\\u003E\\u0026sect;\\u0026sect; 51ff AO\\u003C\\/a\\u003E verwendet wird.\\u003C\\/p\\u003E\\u003Cp\\u003EEinzelspender bekommen von uns nach Eingang ihrer Spende eine Spendenquittung zugesandt.\\u0026lt;\\/p\\u0026gt;\\u003C\\/p\\u003E\\u003Cp\\u003EWir stehen Ihnen f\\u00fcr weitere Fragen zu Ihrer Bestellung gerne zur Verf\\u00fcgung.\\u003C\\/p\\u003E\\u003Cp\\u003EIhr INKOTA Team\\u003C\\/p\\u003E\\u003Cp\\u003EINKOTA-netzwerk e.V.\\u003Cbr \\/\\u003EChrysanthemenstra\\u00dfe 1-3\\u003Cbr \\/\\u003E10407 Berlin\\u003C\\/p\\u003E\\u003Cp\\u003ETel.: +49 (0)30 420 8202-0\\u003Cbr \\/\\u003EFax: +49 (0)30 420 8202-10\\u003Cbr \\/\\u003EE-Mail: shop@inkota.de\\u003C\\/p\\u003E",
+          "format" : "commerce_order_message",
+          "safe_value" : "\\u003Cp\\u003E\\u0026lt;p\\u0026gt;Hallo [current-user:field_user_anrede] [current-user:field_user_nachname],\\u0026lt;br \\/\\u0026gt;Vielen Dank f\\u00fcr Ihre Spende an INKOTA.\\u0026lt;\\/p\\u0026gt;\\u003C\\/p\\u003E\\n\\u003Cp\\u003E\\u0026lt;p\\u0026gt;Der INKOTA-netzwerk e.V. ist beim Finanzamt als gemeinn\\u00fctzige Organisation anerkannt und von der K\\u00f6rperschaftssteuer befreit, somit k\\u00f6nnen Sie Spenden an uns von der Steuer absetzen.\\u003C\\/p\\u003E\\n\\u003Cp\\u003EWir senden Ihnen bereits ab einer Spendensumme in H\\u00f6he von 50 Euro automatisch eine separate Spendenbescheinigung f\\u00fcr das Finanzamt zu. Wir best\\u00e4tigen, dass Ihre Zuwendung steuerbeg\\u00fcnstigter Zwecke im Sinne \\u003Ca href=\\u0022http:\\/\\/www.gesetze-im-internet.de\\/ao_1977\\/__51.html\\u0022 rel=\\u0022nofollow\\u0022 title=\\u0022Spendenquittung\\u0022\\u003E\\u0026sect;\\u0026sect; 51ff AO\\u003C\\/a\\u003E verwendet wird.\\u003C\\/p\\u003E\\n\\u003Cp\\u003EEinzelspender bekommen von uns nach Eingang ihrer Spende eine Spendenquittung zugesandt.\\u0026lt;\\/p\\u0026gt;\\u003C\\/p\\u003E\\n\\u003Cp\\u003EWir stehen Ihnen f\\u00fcr weitere Fragen zu Ihrer Bestellung gerne zur Verf\\u00fcgung.\\u003C\\/p\\u003E\\n\\u003Cp\\u003EIhr INKOTA Team\\u003C\\/p\\u003E\\n\\u003Cp\\u003EINKOTA-netzwerk e.V.\\u003Cbr \\/\\u003EChrysanthemenstra\\u00dfe 1-3\\u003Cbr \\/\\u003E10407 Berlin\\u003C\\/p\\u003E\\n\\u003Cp\\u003ETel.: +49 (0)30 420 8202-0\\u003Cbr \\/\\u003EFax: +49 (0)30 420 8202-10\\u003Cbr \\/\\u003EE-Mail: \\u003Ca href=\\u0022mailto:shop@inkota.de\\u0022\\u003Eshop@inkota.de\\u003C\\/a\\u003E\\u003C\\/p\\u003E"
+        }
+      ],
+      "en" : [
+        {
+          "value" : "\\u003Cp\\u003ESpende @{message:message-commerce-order:order-number} an INKOTA\\u003C\\/p\\u003E",
+          "format" : "filtered_html",
+          "safe_value" : "\\u003Cp\\u003ESpende @{message:message-commerce-order:order-number} an INKOTA\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "\\u003Cp\\u003E\\u0026lt;p\\u0026gt;Hallo [current-user:field_user_anrede] [current-user:field_user_nachname],\\u0026lt;br \\/\\u0026gt;vielen Dank f\\u00fcr Ihre Spende @{message:message-commerce-order:order-number} an INKOTA. \\u0026lt;\\/p\\u0026gt;\\u0026lt;p\\u0026gt;We will send you a donation receipt at the end of the year for your fiscal documents\\u0026lt;\\/p\\u0026gt;\\u0026lt;p\\u0026gt;Please contact us if you have any questions about your donation.\\u0026lt;\\/p\\u0026gt;\\u003C\\/p\\u003E",
+          "format" : "commerce_order_message",
+          "safe_value" : "\\u003Cp\\u003E\\u0026lt;p\\u0026gt;Hallo [current-user:field_user_anrede] [current-user:field_user_nachname],\\u0026lt;br \\/\\u0026gt;vielen Dank f\\u00fcr Ihre Spende @{message:message-commerce-order:order-number} an INKOTA. \\u0026lt;\\/p\\u0026gt;\\u0026lt;p\\u0026gt;We will send you a donation receipt at the end of the year for your fiscal documents\\u0026lt;\\/p\\u0026gt;\\u0026lt;p\\u0026gt;Please contact us if you have any questions about your donation.\\u0026lt;\\/p\\u0026gt;\\u003C\\/p\\u003E"
+        }
+      ],
+      "und" : [
+        {
+          "value" : "Order @{message:message-commerce-order:order-number} at [site:name]",
+          "format" : null
+        },
+        {
+          "value" : "Thanks for your order @{message:message-commerce-order:order-number} at [site:name].\\r\\n\\r\\nIf this is your first order with us, you will receive a separate e-mail with login instructions. You can view your order history with us at any time by logging into our website at:\\r\\n\\r\\n[site:login-url]\\r\\n\\r\\nYou can find the status of your current order at:\\r\\n\\r\\n[message:message-commerce-order:view-url]\\r\\n\\r\\nPlease contact us if you have any questions about your order.",
+          "format" : "commerce_order_message",
+          "safe_value" : "\\u003Cp\\u003EThanks for your order @{message:message-commerce-order:order-number} at [site:name].\\u003C\\/p\\u003E\\n\\u003Cp\\u003EIf this is your first order with us, you will receive a separate e-mail with login instructions. You can view your order history with us at any time by logging into our website at:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[site:login-url]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EYou can find the status of your current order at:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:message-commerce-order:view-url]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EPlease contact us if you have any questions about your order.\\u003C\\/p\\u003E"
+        }
+      ]
+    }
+  }');
+  return $items;
 }

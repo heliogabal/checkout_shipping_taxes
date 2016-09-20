@@ -247,5 +247,35 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
+  // Exported field_base: 'message_commerce_order'.
+  $field_bases['message_commerce_order'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'message_commerce_order',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'sort' => array(
+          'direction' => 'ASC',
+          'property' => 'order_id',
+          'type' => 'property',
+        ),
+        'target_bundles' => array(),
+      ),
+      'target_type' => 'commerce_order',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   return $field_bases;
 }

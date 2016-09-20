@@ -643,25 +643,6 @@ function checkout_shipping_taxes_default_rules_configuration() {
       ]
     }
   }');
-  $items['commerce_tax_rate_ust_7_shops'] = entity_import('rules_config', '{ "commerce_tax_rate_ust_7_shops" : {
-      "LABEL" : "USt 7% shops berechnen",
-      "PLUGIN" : "rule",
-      "OWNER" : "rules",
-      "TAGS" : [ "Commerce Tax", "vat" ],
-      "REQUIRES" : [ "commerce_tax" ],
-      "USES VARIABLES" : { "commerce_line_item" : { "type" : "commerce_line_item", "label" : "Position" } },
-      "DO" : [
-        { "commerce_tax_rate_apply" : {
-            "USING" : {
-              "commerce_line_item" : [ "commerce-line-item" ],
-              "tax_rate_name" : "ust_7_shops"
-            },
-            "PROVIDE" : { "applied_tax" : { "applied_tax" : "Applied tax" } }
-          }
-        }
-      ]
-    }
-  }');
   $items['rules_10_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_10_rabatt_dossier_und_texte" : {
       "LABEL" : "10% Rabatt Dossier und Texte",
       "PLUGIN" : "reaction rule",
