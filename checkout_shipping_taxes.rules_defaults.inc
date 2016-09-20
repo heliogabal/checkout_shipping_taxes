@@ -22,7 +22,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['commerce_payment_bank_transfer'] = entity_import('rules_config', '{ "commerce_payment_bank_transfer" : {
-      "LABEL" : "Bank Transfer",
+      "LABEL" : "Auf Rechnung",
       "PLUGIN" : "reaction rule",
       "ACTIVE" : false,
       "OWNER" : "rules",
@@ -970,7 +970,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "stock_control" ],
-      "REQUIRES" : [ "rules", "rules_i18n", "commerce_stock" ],
+      "REQUIRES" : [ "rules", "commerce_stock" ],
       "ON" : { "commerce_stock_add_to_cart_check_product" : [] },
       "IF" : [
         { "data_is" : { "data" : [ "commerce-product:commerce-stock" ], "value" : "50" } }
@@ -992,7 +992,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "WEIGHT" : "10",
       "OWNER" : "rules",
       "TAGS" : [ "custom" ],
-      "REQUIRES" : [ "commerce_order", "rules", "rules_i18n", "entity" ],
+      "REQUIRES" : [ "commerce_order", "rules", "entity" ],
       "ON" : { "commerce_order_update" : [] },
       "IF" : [
         { "commerce_order_contains_product_type" : {
