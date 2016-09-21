@@ -24,7 +24,6 @@ function checkout_shipping_taxes_default_rules_configuration() {
   $items['commerce_payment_bank_transfer'] = entity_import('rules_config', '{ "commerce_payment_bank_transfer" : {
       "LABEL" : "Auf Rechnung",
       "PLUGIN" : "reaction rule",
-      "ACTIVE" : false,
       "OWNER" : "rules",
       "TAGS" : [ "Commerce Payment" ],
       "REQUIRES" : [ "commerce_payment" ],
@@ -32,7 +31,24 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_payment_enable_bank_transfer" : {
             "commerce_order" : [ "commerce-order" ],
-            "payment_method" : "bank_transfer"
+            "payment_method" : { "value" : {
+                "method_id" : "bank_transfer",
+                "settings" : {
+                  "details" : {
+                    "account_owner" : "INKOTA-netzwerk e.V.",
+                    "account_number" : "",
+                    "account_iban" : "DE06 3506 0190 1555 0000 10",
+                    "bank_code_appellation" : "",
+                    "bank_code" : "",
+                    "account_swift" : "GENODED1DKD",
+                    "account_bank" : "KD-Bank",
+                    "account_branch" : ""
+                  },
+                  "subject_oid" : 1,
+                  "policy" : ""
+                }
+              }
+            }
           }
         }
       ]
@@ -86,22 +102,19 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "value" : "DE"
           }
         },
-        { "AND" : [
-            { "NOT commerce_physical_rules_order_weight_comparison" : {
-                "commerce_order" : [ "commerce_order" ],
-                "operator" : "\\u003C=",
-                "value" : "0",
-                "unit" : "g"
-              }
-            },
-            { "commerce_physical_rules_order_weight_comparison" : {
-                "commerce_order" : [ "commerce_order" ],
-                "operator" : "\\u003C=",
-                "value" : "50",
-                "unit" : "g"
-              }
-            }
-          ]
+        { "NOT commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "0",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "50",
+            "unit" : "g"
+          }
         }
       ],
       "DO" : [
@@ -203,22 +216,19 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "value" : "DE"
           }
         },
-        { "AND" : [
-            { "NOT commerce_physical_rules_order_weight_comparison" : {
-                "commerce_order" : [ "commerce_order" ],
-                "operator" : "\\u003C=",
-                "value" : "51",
-                "unit" : "g"
-              }
-            },
-            { "commerce_physical_rules_order_weight_comparison" : {
-                "commerce_order" : [ "commerce_order" ],
-                "operator" : "\\u003C=",
-                "value" : "480",
-                "unit" : "g"
-              }
-            }
-          ]
+        { "NOT commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "51",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "480",
+            "unit" : "g"
+          }
         }
       ],
       "DO" : [
@@ -234,8 +244,31 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate Deutschland Briefsendung bis 50g",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_shipping" ],
-      "USES VARIABLES" : { "commerce_order" : { "type" : "commerce_order", "label" : "Reihenfolge" } },
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "DE"
+          }
+        },
+        { "NOT commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "0",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "50",
+            "unit" : "g"
+          }
+        }
+      ],
       "DO" : [
         { "commerce_shipping_service_rate_order" : {
             "shipping_service_name" : "deutschland_briefsendung_bis_50g",
@@ -287,8 +320,31 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate Deutschland Paket bis 5kg",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_shipping" ],
-      "USES VARIABLES" : { "commerce_order" : { "type" : "commerce_order", "label" : "Reihenfolge" } },
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "DE"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003E=",
+            "value" : "2001",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "4700",
+            "unit" : "g"
+          }
+        }
+      ],
       "DO" : [
         { "commerce_shipping_service_rate_order" : {
             "shipping_service_name" : "deutschland_paeckchen_bis_5kg",
@@ -340,9 +396,17 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate EU Briefsendung bis 1000g",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_physical", "commerce_order", "rules", "commerce_shipping" ],
+      "REQUIRES" : [ "commerce_order", "rules", "commerce_physical", "commerce_shipping" ],
       "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
       "IF" : [
+        { "NOT commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "DE"
+          }
+        },
+        { "component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -356,24 +420,6 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "value" : "980",
             "unit" : "g"
           }
-        },
-        { "NOT commerce_order_compare_address" : {
-            "commerce_order" : [ "commerce_order" ],
-            "address_field" : "commerce_customer_shipping|commerce_customer_address",
-            "address_component" : "country",
-            "value" : "DE"
-          }
-        },
-        { "OR" : [
-            { "commerce_order_compare_address" : {
-                "commerce_order" : [ "commerce_order" ],
-                "address_field" : "commerce_customer_shipping|commerce_customer_address",
-                "address_component" : "country",
-                "value" : "CH"
-              }
-            },
-            { "component_rules_check_if_the_shipping_is_to_eu" : [] }
-          ]
         }
       ],
       "DO" : [
@@ -389,7 +435,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate EU Briefsendung bis 500g",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "REQUIRES" : [ "commerce_order", "rules", "commerce_physical", "commerce_shipping" ],
       "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
       "IF" : [
         { "NOT commerce_order_compare_address" : {
@@ -399,6 +445,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "value" : "DE"
           }
         },
+        { "component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -437,17 +484,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "value" : "DE"
           }
         },
-        { "OR" : [
-            { "component_rules_check_if_the_shipping_is_to_eu" : [] },
-            { "commerce_order_compare_address" : {
-                "commerce_order" : [ "commerce_order" ],
-                "address_field" : "commerce_customer_shipping|commerce_customer_address",
-                "address_component" : "country",
-                "value" : "CH"
-              }
-            }
-          ]
-        },
+        { "component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -486,17 +523,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "value" : "DE"
           }
         },
-        { "OR" : [
-            { "commerce_order_compare_address" : {
-                "commerce_order" : [ "commerce_order" ],
-                "address_field" : "commerce_customer_shipping|commerce_customer_address",
-                "address_component" : "country",
-                "value" : "CH"
-              }
-            },
-            { "component_rules_check_if_the_shipping_is_to_eu" : [] }
-          ]
-        },
+        { "component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -535,17 +562,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "value" : "DE"
           }
         },
-        { "OR" : [
-            { "commerce_order_compare_address" : {
-                "commerce_order" : [ "commerce_order" ],
-                "address_field" : "commerce_customer_shipping|commerce_customer_address",
-                "address_component" : "country",
-                "value" : "CH"
-              }
-            },
-            { "component_rules_check_if_the_shipping_is_to_eu" : [] }
-          ]
-        },
+        { "component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -564,6 +581,196 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_shipping_service_rate_order" : {
             "shipping_service_name" : "eu_paket_bis_5000g",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_shipping_service_not_eu_briefsendung_bis_1000g'] = entity_import('rules_config', '{ "commerce_shipping_service_not_eu_briefsendung_bis_1000g" : {
+      "LABEL" : "Rate Not EU Briefsendung bis 1000g",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "CH"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003E",
+            "value" : "480",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "980",
+            "unit" : "g"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "not_eu_briefsendung_bis_1000g",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_shipping_service_not_eu_briefsendung_bis_500g'] = entity_import('rules_config', '{ "commerce_shipping_service_not_eu_briefsendung_bis_500g" : {
+      "LABEL" : "Rate Not EU Briefsendung bis 500g",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "CH"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003E",
+            "value" : "0",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "480",
+            "unit" : "g"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "not_eu_briefsendung_bis_500g",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_shipping_service_not_eu_briefsendung_bis_50g'] = entity_import('rules_config', '{ "commerce_shipping_service_not_eu_briefsendung_bis_50g" : {
+      "LABEL" : "Rate Not EU Briefsendung bis 50g",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "CH"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003E=",
+            "value" : "0",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C",
+            "value" : "50",
+            "unit" : "g"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "not_eu_briefsendung_bis_50g",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_shipping_service_not_eu_p_ckchen_bis_2000g'] = entity_import('rules_config', '{ "commerce_shipping_service_not_eu_p_ckchen_bis_2000g" : {
+      "LABEL" : "Rate Not EU P\\u00e4ckchen bis 2000g",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "CH"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003E",
+            "value" : "980",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "1.98",
+            "unit" : "kg"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "not_eu_p_ckchen_bis_2000g",
+            "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_shipping_service_not_eu_paket_bis_5000g'] = entity_import('rules_config', '{ "commerce_shipping_service_not_eu_paket_bis_5000g" : {
+      "LABEL" : "Rate Not EU Paket bis 5000g",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "CH"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003E",
+            "value" : "1.98",
+            "unit" : "kg"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "4.5",
+            "unit" : "kg"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_shipping_service_rate_order" : {
+            "shipping_service_name" : "not_eu_paket_bis_5000g",
             "commerce_order" : [ "commerce-order" ]
           }
         }
@@ -638,6 +845,30 @@ function checkout_shipping_taxes_default_rules_configuration() {
               "tax_rate_name" : "ust"
             },
             "PROVIDE" : { "applied_tax" : { "applied_tax" : "Applied tax" } }
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_tax_steuern_remove_f_r_vat'] = entity_import('rules_config', '{ "commerce_tax_steuern_remove_f_r_vat" : {
+      "LABEL" : "Steuern REMOVE f\\u00fcr: VAT",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce Tax" ],
+      "REQUIRES" : [ "rules", "commerce_line_item", "commerce_product_reference" ],
+      "ON" : { "commerce_product_calculate_sell_price" : [] },
+      "IF" : [
+        { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_product" } },
+        { "component_rules_check_if_the_product_has_7_vat" : { "product" : [ "commerce-line-item:commerce-product" ] } },
+        { "NOT component_rules_check_if_the_shipping_is_to_eu" : [] },
+        { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_unit_price" } }
+      ],
+      "DO" : [
+        { "commerce_line_item_unit_price_divide" : {
+            "commerce_line_item" : [ "commerce_line_item" ],
+            "amount" : "1.07",
+            "component_name" : "base_price",
+            "round_mode" : "1"
           }
         }
       ]
@@ -970,7 +1201,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "stock_control" ],
-      "REQUIRES" : [ "rules", "commerce_stock" ],
+      "REQUIRES" : [ "rules", "rules_i18n", "commerce_stock" ],
       "ON" : { "commerce_stock_add_to_cart_check_product" : [] },
       "IF" : [
         { "data_is" : { "data" : [ "commerce-product:commerce-stock" ], "value" : "50" } }
@@ -992,7 +1223,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "WEIGHT" : "10",
       "OWNER" : "rules",
       "TAGS" : [ "custom" ],
-      "REQUIRES" : [ "commerce_order", "rules", "entity" ],
+      "REQUIRES" : [ "commerce_order", "rules", "rules_i18n", "entity" ],
       "ON" : { "commerce_order_update" : [] },
       "IF" : [
         { "commerce_order_contains_product_type" : {
