@@ -22,7 +22,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['commerce_payment_bank_transfer'] = entity_import('rules_config', '{ "commerce_payment_bank_transfer" : {
-      "LABEL" : "Auf Rechnung",
+      "LABEL" : "Bank Transfer",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "Commerce Payment" ],
@@ -44,7 +44,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
                     "account_bank" : "KD-Bank",
                     "account_branch" : ""
                   },
-                  "subject_oid" : 1,
+                  "subject_oid" : 0,
                   "policy" : ""
                 }
               }
@@ -796,12 +796,12 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['commerce_tax_rate_mwst_reduced_de'] = entity_import('rules_config', '{ "commerce_tax_rate_mwst_reduced_de" : {
-      "LABEL" : "MwSt. 7% berechnen",
+      "LABEL" : "Calculate MwSt. 7%",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
       "TAGS" : [ "Commerce Tax", "vat" ],
       "REQUIRES" : [ "commerce_tax" ],
-      "USES VARIABLES" : { "commerce_line_item" : { "type" : "commerce_line_item", "label" : "Position" } },
+      "USES VARIABLES" : { "commerce_line_item" : { "type" : "commerce_line_item", "label" : "Line item" } },
       "DO" : [
         { "commerce_tax_rate_apply" : {
             "USING" : {
@@ -1201,7 +1201,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "stock_control" ],
-      "REQUIRES" : [ "rules", "rules_i18n", "commerce_stock" ],
+      "REQUIRES" : [ "rules", "commerce_stock" ],
       "ON" : { "commerce_stock_add_to_cart_check_product" : [] },
       "IF" : [
         { "data_is" : { "data" : [ "commerce-product:commerce-stock" ], "value" : "50" } }
@@ -1223,7 +1223,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "WEIGHT" : "10",
       "OWNER" : "rules",
       "TAGS" : [ "custom" ],
-      "REQUIRES" : [ "commerce_order", "rules", "rules_i18n", "entity" ],
+      "REQUIRES" : [ "commerce_order", "rules", "entity" ],
       "ON" : { "commerce_order_update" : [] },
       "IF" : [
         { "commerce_order_contains_product_type" : {
@@ -1278,11 +1278,6 @@ function checkout_shipping_taxes_default_rules_configuration() {
             "entity" : [ "commerce-line-item:order" ],
             "type" : "commerce_order",
             "bundle" : { "value" : { "commerce_order" : "commerce_order" } }
-          }
-        },
-        { "entity_has_field" : {
-            "entity" : [ "commerce-line-item:order" ],
-            "field" : "commerce_customer_billing"
           }
         },
         { "entity_has_field" : {

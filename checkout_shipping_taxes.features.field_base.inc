@@ -211,17 +211,15 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_ust_id',
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'value' => array(
+        0 => 'value',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
+    'module' => 'vat_number',
+    'settings' => array(),
     'translatable' => 0,
-    'type' => 'text',
+    'type' => 'vat_number',
   );
 
   // Exported field_base: 'field_wholesale_price'.

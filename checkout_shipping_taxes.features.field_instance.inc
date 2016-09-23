@@ -93,13 +93,13 @@ function checkout_shipping_taxes_field_default_field_instances() {
     'bundle' => 'billing',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Wenn Sie als europäisches Unternehmen eine USt-ID angeben, wird Ihnen keine MwSt. berechnet.',
+    'description' => 'Wenn Sie als europäisches Unternehmen außerhalb Deutschlands ihre korrekte USt-ID angeben, wird Ihnen keine MwSt. berechnet.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'vat_number',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'vat_number_formatter',
         'weight' => -9,
       ),
     ),
@@ -107,24 +107,19 @@ function checkout_shipping_taxes_field_default_field_instances() {
     'entity_type' => 'commerce_customer_profile',
     'exclude_cv' => 0,
     'field_name' => 'field_ust_id',
-    'label' => 'USt-ID',
+    'label' => 'USt.-ID',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
-      'linkit' => array(
-        'enable' => 0,
-        'insert_plugin' => '',
-      ),
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'vat_number',
       'settings' => array(
-        'size' => 40,
+        'skip_validation_on_service_failure' => 0,
       ),
-      'type' => 'text_textfield',
+      'type' => 'vat_number_widget',
       'weight' => 4,
     ),
   );
@@ -1062,9 +1057,9 @@ function checkout_shipping_taxes_field_default_field_instances() {
   t('Product Tax');
   t('Stock');
   t('Subtitle');
-  t('USt-ID');
+  t('USt.-ID');
   t('Weight');
-  t('Wenn Sie als europäisches Unternehmen eine USt-ID angeben, wird Ihnen keine MwSt. berechnet.');
+  t('Wenn Sie als europäisches Unternehmen außerhalb Deutschlands ihre korrekte USt-ID angeben, wird Ihnen keine MwSt. berechnet.');
   t('Wholesale Price');
 
   return $field_instances;

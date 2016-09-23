@@ -80,6 +80,7 @@ dependencies[] = rules_i18n
 dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = title
+dependencies[] = vat_number
 features[commerce_checkout_pane][] = account
 features[commerce_checkout_pane][] = cart_contents
 features[commerce_checkout_pane][] = checkout_completion_message
