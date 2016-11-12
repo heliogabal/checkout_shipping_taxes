@@ -12,189 +12,189 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
 
   $panes['account'] = array(
     'page' => 'checkout',
-    'weight' => -19,
+    'weight' => -5,
     'pane_id' => 'account',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'enabled' => 1,
-    'review' => 1,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['cart_contents'] = array(
     'page' => 'checkout',
-    'weight' => -20,
+    'weight' => -10,
     'pane_id' => 'cart_contents',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'enabled' => 1,
-    'review' => 1,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['checkout_completion_message'] = array(
     'page' => 'complete',
-    'fieldset' => 0,
+    'fieldset' => FALSE,
     'pane_id' => 'checkout_completion_message',
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'weight' => -20,
-    'enabled' => 1,
-    'review' => 1,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['checkout_donate'] = array(
     'page' => 'checkout',
-    'fieldset' => 1,
-    'enabled' => 1,
+    'fieldset' => TRUE,
+    'enabled' => FALSE,
     'pane_id' => 'checkout_donate',
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'weight' => -18,
-    'review' => 1,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'review' => TRUE,
   );
 
   $panes['checkout_review'] = array(
     'page' => 'review',
-    'fieldset' => 0,
+    'fieldset' => FALSE,
     'pane_id' => 'checkout_review',
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'weight' => -20,
-    'enabled' => 1,
-    'review' => 1,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['commerce_checkout_pane_payment'] = array(
-    'page' => 'disabled',
-    'weight' => -19,
+    'page' => 'review',
+    'weight' => 10,
     'pane_id' => 'commerce_checkout_pane_payment',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'enabled' => 0,
-    'review' => 1,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['commerce_fieldgroup_pane__group_commerce_order_note'] = array(
-    'enabled' => 1,
+    'enabled' => FALSE,
     'pane_id' => 'commerce_fieldgroup_pane__group_commerce_order_note',
     'page' => 'checkout',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'weight' => -16,
-    'review' => 0,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'review' => TRUE,
   );
 
   $panes['commerce_payment'] = array(
-    'page' => 'checkout',
-    'weight' => -15,
+    'page' => 'review',
+    'weight' => 10,
     'pane_id' => 'commerce_payment',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'enabled' => 1,
-    'review' => 1,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['commerce_payment_redirect'] = array(
     'page' => 'payment',
     'pane_id' => 'commerce_payment_redirect',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
     'weight' => 0,
-    'enabled' => 1,
-    'review' => 1,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['commerce_shipping'] = array(
-    'page' => 'disabled',
-    'weight' => -20,
-    'review' => 0,
+    'page' => 'shipping',
+    'weight' => 2,
+    'review' => FALSE,
     'pane_id' => 'commerce_shipping',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'enabled' => 0,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
   );
 
   $panes['commerce_simplenews_checkout'] = array(
     'page' => 'checkout',
-    'weight' => -17,
+    'weight' => -5,
     'pane_id' => 'commerce_simplenews_checkout',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'enabled' => 1,
-    'review' => 1,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['customer_profile_billing'] = array(
-    'page' => 'shipping',
-    'weight' => -19,
+    'page' => 'checkout',
+    'weight' => 5,
     'pane_id' => 'customer_profile_billing',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'enabled' => 1,
-    'review' => 1,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['customer_profile_shipping'] = array(
-    'page' => 'shipping',
-    'weight' => -20,
+    'page' => 'checkout',
+    'weight' => 0,
     'pane_id' => 'customer_profile_shipping',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'enabled' => 1,
-    'review' => 1,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['extra_pane__node__1264'] = array(
     'pane_id' => 'extra_pane__node__1264',
     'page' => 'checkout',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'weight' => -14,
-    'enabled' => 1,
-    'review' => 1,
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['extra_pane__node__1420'] = array(
     'pane_id' => 'extra_pane__node__1420',
-    'page' => 'disabled',
-    'fieldset' => 1,
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'weight' => -17,
-    'enabled' => 0,
-    'review' => 1,
+    'page' => 'checkout',
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['paypal_ec_review'] = array(
-    'page' => 'disabled',
-    'fieldset' => 0,
+    'page' => 'paypal_ec',
+    'fieldset' => FALSE,
     'pane_id' => 'paypal_ec_review',
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'weight' => -18,
-    'enabled' => 0,
-    'review' => 1,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   $panes['stock_validation_checkout_pane'] = array(
     'page' => 'checkout',
-    'fieldset' => 0,
+    'fieldset' => FALSE,
     'pane_id' => 'stock_validation_checkout_pane',
-    'collapsible' => 0,
-    'collapsed' => 0,
-    'weight' => -13,
-    'enabled' => 1,
-    'review' => 1,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
   );
 
   return $panes;
@@ -225,43 +225,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 330,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_briefsendung_bis_1000g',
-              'price' => array(
-                'amount' => 308,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 22,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -289,43 +253,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 250,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_briefsendung_bis_500g',
-              'price' => array(
-                'amount' => 234,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 16,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -353,43 +281,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 200,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_deutschland_briefsendung_bis_50g',
-              'price' => array(
-                'amount' => 187,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 13,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -417,43 +309,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 550,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_deutschland_p_ckchen_bis_2000g',
-              'price' => array(
-                'amount' => 514,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 36,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -481,43 +337,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 750,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_deutschland_paeckchen_bis_5kg',
-              'price' => array(
-                'amount' => 701,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 49,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -545,43 +365,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 850,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_deutschland_paket_bis_10000g',
-              'price' => array(
-                'amount' => 794,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 56,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -609,43 +393,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 850,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_eu_briefsendung_bis_1000g',
-              'price' => array(
-                'amount' => 794,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 56,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -673,43 +421,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 450,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_eu_briefsendung_bis_500g',
-              'price' => array(
-                'amount' => 421,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 29,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -737,43 +449,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 250,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_eu_briefsendung_bis_50g',
-              'price' => array(
-                'amount' => 234,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 16,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -801,43 +477,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 1000,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_eu_p_ckchen_bis_2000g',
-              'price' => array(
-                'amount' => 935,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 65,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -865,43 +505,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'base_rate' => array(
         'amount' => 1700,
         'currency_code' => 'EUR',
-        'data' => array(
-          'components' => array(
-            0 => array(
-              'name' => 'flat_rate_eu_paket_bis_5000g',
-              'price' => array(
-                'amount' => 1589,
-                'currency_code' => 'EUR',
-                'data' => array(),
-              ),
-              'included' => TRUE,
-            ),
-            1 => array(
-              'name' => 'tax|mwst_reduced_de',
-              'price' => array(
-                'amount' => 111,
-                'currency_code' => 'EUR',
-                'data' => array(
-                  'tax_rate' => array(
-                    'name' => 'mwst_reduced_de',
-                    'display_title' => 'MwSt. 7%',
-                    'description' => '',
-                    'rate' => 0.07,
-                    'type' => 'vat',
-                    'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-                    'default_rules_component' => 1,
-                    'price_component' => 'tax|mwst_reduced_de',
-                    'calculation_callback' => 'commerce_tax_rate_calculate',
-                    'module' => 'commerce_tax_ui',
-                    'title' => 'MwSt. 7%',
-                    'admin_list' => TRUE,
-                  ),
-                ),
-              ),
-              'included' => TRUE,
-            ),
-          ),
-        ),
+        'data' => array(),
       ),
       'data' => array(
         'include_tax' => 'mwst_reduced_de',
@@ -1080,49 +684,6 @@ function checkout_shipping_taxes_commerce_product_default_types() {
       'description' => 'A basic product type.',
       'help' => '',
       'revision' => 1,
-    ),
-  );
-  return $items;
-}
-
-/**
- * Implements hook_commerce_tax_default_rates().
- */
-function checkout_shipping_taxes_commerce_tax_default_rates() {
-  $items = array(
-    'mwst_reduced_de' => array(
-      'name' => 'mwst_reduced_de',
-      'display_title' => 'MwSt. 7%',
-      'description' => '',
-      'rate' => 0.07,
-      'type' => 'vat',
-      'rules_component' => 'commerce_tax_rate_mwst_reduced_de',
-      'default_rules_component' => 1,
-      'price_component' => 'tax|mwst_reduced_de',
-      'calculation_callback' => 'commerce_tax_rate_calculate',
-      'module' => 'commerce_tax_ui',
-      'title' => 'MwSt. 7%',
-      'admin_list' => TRUE,
-    ),
-  );
-  return $items;
-}
-
-/**
- * Implements hook_commerce_tax_default_types().
- */
-function checkout_shipping_taxes_commerce_tax_default_types() {
-  $items = array(
-    'vat' => array(
-      'name' => 'vat',
-      'display_title' => 'VAT',
-      'description' => 'A basic type for taxes that display inclusive with product prices.',
-      'display_inclusive' => 1,
-      'round_mode' => 1,
-      'rule' => 'commerce_tax_type_vat',
-      'module' => 'commerce_tax_ui',
-      'title' => 'VAT',
-      'admin_list' => TRUE,
     ),
   );
   return $items;
