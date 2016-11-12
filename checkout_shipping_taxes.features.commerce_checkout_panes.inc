@@ -14,22 +14,22 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'page' => 'checkout',
     'weight' => -5,
     'pane_id' => 'account',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['cart_contents'] = array(
     'page' => 'checkout',
     'weight' => -10,
     'pane_id' => 'cart_contents',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['checkout_completion_message'] = array(
@@ -39,19 +39,19 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['checkout_donate'] = array(
     'page' => 'checkout',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'enabled' => FALSE,
     'pane_id' => 'checkout_donate',
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'review' => TRUE,
+    'review' => 1,
   );
 
   $panes['checkout_review'] = array(
@@ -61,52 +61,52 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['commerce_checkout_pane_payment'] = array(
     'page' => 'review',
     'weight' => 10,
     'pane_id' => 'commerce_checkout_pane_payment',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['commerce_fieldgroup_pane__group_commerce_order_note'] = array(
     'enabled' => FALSE,
     'pane_id' => 'commerce_fieldgroup_pane__group_commerce_order_note',
     'page' => 'checkout',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'review' => TRUE,
+    'review' => 1,
   );
 
   $panes['commerce_payment'] = array(
     'page' => 'review',
     'weight' => 10,
     'pane_id' => 'commerce_payment',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['commerce_payment_redirect'] = array(
     'page' => 'payment',
     'pane_id' => 'commerce_payment_redirect',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['commerce_shipping'] = array(
@@ -114,65 +114,65 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'weight' => 2,
     'review' => FALSE,
     'pane_id' => 'commerce_shipping',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
-    'enabled' => TRUE,
+    'enabled' => 1,
   );
 
   $panes['commerce_simplenews_checkout'] = array(
     'page' => 'checkout',
     'weight' => -5,
     'pane_id' => 'commerce_simplenews_checkout',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['customer_profile_billing'] = array(
     'page' => 'checkout',
     'weight' => 5,
     'pane_id' => 'customer_profile_billing',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['customer_profile_shipping'] = array(
     'page' => 'checkout',
     'weight' => 0,
     'pane_id' => 'customer_profile_shipping',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['extra_pane__node__1264'] = array(
     'pane_id' => 'extra_pane__node__1264',
     'page' => 'checkout',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['extra_pane__node__1420'] = array(
     'pane_id' => 'extra_pane__node__1420',
     'page' => 'checkout',
-    'fieldset' => TRUE,
+    'fieldset' => 1,
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['paypal_ec_review'] = array(
@@ -182,8 +182,8 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   $panes['stock_validation_checkout_pane'] = array(
@@ -193,8 +193,8 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'collapsible' => FALSE,
     'collapsed' => FALSE,
     'weight' => 0,
-    'enabled' => TRUE,
-    'review' => TRUE,
+    'enabled' => 1,
+    'review' => 1,
   );
 
   return $panes;
