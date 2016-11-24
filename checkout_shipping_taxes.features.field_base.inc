@@ -70,7 +70,36 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'module' => 'commerce_vat_reference',
     'settings' => array(
       'vat_country' => array(
+        'AT' => 0,
+        'BE' => 0,
+        'BG' => 0,
+        'CH' => 0,
+        'CY' => 0,
+        'CZ' => 0,
         'DE' => 'DE',
+        'DK' => 0,
+        'EE' => 0,
+        'ES' => 0,
+        'FI' => 0,
+        'FR' => 0,
+        'GB' => 0,
+        'GR' => 0,
+        'HR' => 0,
+        'HU' => 0,
+        'IE' => 0,
+        'IT' => 0,
+        'LT' => 0,
+        'LU' => 0,
+        'LV' => 0,
+        'MT' => 0,
+        'NL' => 0,
+        'NO' => 0,
+        'PL' => 0,
+        'PT' => 0,
+        'RO' => 0,
+        'SE' => 0,
+        'SI' => 0,
+        'SK' => 0,
       ),
     ),
     'translatable' => 0,
@@ -260,24 +289,6 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_product_tax'.
-  $field_bases['field_product_tax'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_product_tax',
-    'global_block_settings' => 1,
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
   // Exported field_base: 'field_ust_id'.
   $field_bases['field_ust_id'] = array(
     'active' => 1,
@@ -295,29 +306,6 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'vat_number',
-  );
-
-  // Exported field_base: 'field_wholesale_price'.
-  $field_bases['field_wholesale_price'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_wholesale_price',
-    'global_block_settings' => 1,
-    'indexes' => array(
-      'currency_price' => array(
-        0 => 'amount',
-        1 => 'currency_code',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'commerce_price',
-    'settings' => array(
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'commerce_price',
   );
 
   // Exported field_base: 'message_commerce_order'.

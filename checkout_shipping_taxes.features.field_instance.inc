@@ -250,7 +250,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'module' => 'commerce_vat_reference',
         'settings' => array(),
         'type' => 'commerce_vat_rate',
-        'weight' => 13,
+        'weight' => 16,
       ),
       'line_item' => array(
         'label' => 'above',
@@ -285,14 +285,26 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
   // Exported field_instance: 'commerce_product-product-commerce_de_vat'.
   $field_instances['commerce_product-product-commerce_de_vat'] = array(
     'bundle' => 'product',
-    'default_value' => NULL,
+    'commerce_bpc' => array(
+      'show_field' => 1,
+    ),
+    'commerce_cart_settings' => array(
+      'attribute_field' => 0,
+      'attribute_widget' => 'select',
+      'attribute_widget_title' => 'Deutschland VAT Rates',
+    ),
+    'default_value' => array(
+      0 => array(
+        'value' => 'de_reduced',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -328,21 +340,24 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'commerce_product',
+    'exclude_cv' => 0,
     'field_name' => 'commerce_de_vat',
-    'label' => 'Deutschland VAT Rates',
-    'required' => FALSE,
+    'label' => 'MwSt.-Satz',
+    'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => '',
+        'apply_chosen' => 1,
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 4,
     ),
   );
 
@@ -364,7 +379,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'module' => 'commerce_vat_reference',
         'settings' => array(),
         'type' => 'commerce_vat_rate',
-        'weight' => 14,
+        'weight' => 17,
       ),
       'line_item' => array(
         'label' => 'above',
@@ -399,7 +414,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 12,
     ),
   );
 
@@ -793,6 +808,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'commerce_product',
+    'exclude_cv' => 0,
     'field_name' => 'field_product_image',
     'label' => 'Image',
     'required' => 0,
@@ -813,29 +829,20 @@ function checkout_shipping_taxes_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          0 => 'public',
-          1 => 'private',
+          'private' => 'private',
+          'public' => 'public',
         ),
         'allowed_types' => array(
-          0 => 'image',
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
         ),
-        'browser_plugins' => array(),
-        'filefield_sources' => array(
-          'filefield_sources' => array(),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 0,
+          'upload' => 'upload',
         ),
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 8,
@@ -893,6 +900,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'commerce_product',
+    'exclude_cv' => 0,
     'field_name' => 'field_product_pdf',
     'label' => 'PDF',
     'required' => 0,
@@ -900,7 +908,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
       'description_field' => 0,
       'exclude_cv' => FALSE,
       'file_directory' => 'pdf',
-      'file_extensions' => 'txt doc pdf docx odt xls',
+      'file_extensions' => 'pdf',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -909,28 +917,20 @@ function checkout_shipping_taxes_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          0 => 'public',
-          1 => 'private',
+          'private' => 'private',
+          'public' => 'public',
         ),
         'allowed_types' => array(
-          0 => 'image',
+          'audio' => 0,
+          'document' => 'document',
+          'image' => 0,
+          'video' => 0,
         ),
-        'browser_plugins' => array(),
-        'filefield_sources' => array(
-          'filefield_sources' => array(),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 0,
+          'upload' => 'upload',
         ),
-        'progress_indicator' => 'bar',
       ),
       'type' => 'media_generic',
       'weight' => 9,
@@ -1006,159 +1006,6 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-field_product_tax'.
-  $field_instances['commerce_product-product-field_product_tax'] = array(
-    'bundle' => 'product',
-    'default_value' => array(
-      0 => array(
-        'value' => 7,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'add_to_cart_confirmation_view' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'commerce_product_in_cart' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 4,
-      ),
-      'line_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'node_aehnliche_produkte' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'node_teaser' => array(
-        'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 4,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'commerce_product',
-    'field_name' => 'field_product_tax',
-    'label' => 'Product Tax',
-    'required' => 0,
-    'settings' => array(
-      'exclude_cv' => FALSE,
-      'max' => '',
-      'min' => '',
-      'prefix' => 'inkl. ',
-      'suffix' => '% MwSt.',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(
-        'available_options' => '',
-        'available_options_php' => '',
-        'markup_available_options_php' => '&lt;Keine&gt;',
-        'other' => 'Andere',
-        'other_size' => 60,
-        'other_title' => '',
-        'other_unknown_defaults' => 'other',
-      ),
-      'type' => 'number',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'commerce_product-product-field_wholesale_price'.
-  $field_instances['commerce_product-product-field_wholesale_price'] = array(
-    'bundle' => 'product',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'add_to_cart_confirmation_view' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'commerce_product_in_cart' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'line_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'node_aehnliche_produkte' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'node_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-    ),
-    'entity_type' => 'commerce_product',
-    'field_name' => 'field_wholesale_price',
-    'label' => 'Wholesale Price',
-    'required' => 0,
-    'settings' => array(
-      'exclude_cv' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'commerce_price',
-      'settings' => array(
-        'currency_code' => 'default',
-      ),
-      'type' => 'commerce_price_full',
-      'weight' => 11,
-    ),
-  );
-
   // Exported field_instance:
   // 'message-commerce_order_donation_thank_you-message_commerce_order'.
   $field_instances['message-commerce_order_donation_thank_you-message_commerce_order'] = array(
@@ -1220,21 +1067,19 @@ function checkout_shipping_taxes_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
-  t('Deutschland VAT Rates');
   t('Disable stock for this product');
   t('Image');
+  t('MwSt.-Satz');
   t('Norway VAT Rates');
   t('Order');
   t('PDF');
   t('Price');
-  t('Product Tax');
   t('Stock');
   t('Subtitle');
   t('Switzerland VAT Rates');
   t('USt.-ID');
   t('Weight');
   t('Wenn Sie als europäisches Unternehmen außerhalb Deutschlands ihre korrekte USt-ID angeben, wird Ihnen keine MwSt. berechnet.');
-  t('Wholesale Price');
 
   return $field_instances;
 }

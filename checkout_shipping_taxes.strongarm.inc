@@ -23,7 +23,7 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm->name = 'commerce_billy_invoice_nr_last';
   $strongarm->value = array(
     'year' => '2016',
-    'id' => 47,
+    'id' => 62,
   );
   $export['commerce_billy_invoice_nr_last'] = $strongarm;
 
@@ -157,13 +157,13 @@ Das Team vom INKOTA webshop';
 GENODED1DKD bei der KD-Bank.</p>
 <p>
 Mit freundlichen Grüßen<br />
-Alexandra Rieg<br />
+Dorothea Decker<br />
 i.A. INKOTA-netzwerk
 </p>
 <p>&nbsp;</p>
 
 ',
-    'invoice_footer' => '<p>P.S.: Eine unabhängige Stimme braucht eine unabhängige Finanzierung! <br />Unterstützen Sie unsere Arbeit dauerhaft – mit einer Fördermitgliedschaft: <br /><a href="www.inkota.de/foerdermitgliedschaft">www.inkota.de/foerdermitgliedschaft</a></p>',
+    'invoice_footer' => '<p>P.S.: Eine unabhängige Stimme braucht eine unabhängige Finanzierung! <br />Unterstützen Sie unsere Arbeit dauerhaft – mit einer Fördermitgliedschaft: <br /><a href="https://www.inkota.de/foerdermitgliedschaft">www.inkota.de/foerdermitgliedschaft</a></p>',
   );
   $export['commerce_billy_pdf_text_settings'] = $strongarm;
 
