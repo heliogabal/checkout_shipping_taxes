@@ -88,9 +88,10 @@ function checkout_shipping_taxes_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_customer_profile-billing-field_ust_id'.
-  $field_instances['commerce_customer_profile-billing-field_ust_id'] = array(
-    'bundle' => 'billing',
+  // Exported field_instance:
+  // 'commerce_customer_profile-eu_vat_rc-commerce_vat_number'.
+  $field_instances['commerce_customer_profile-eu_vat_rc-commerce_vat_number'] = array(
+    'bundle' => 'eu_vat_rc',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Wenn Sie als europäisches Unternehmen außerhalb Deutschlands ihre korrekte USt-ID angeben, wird Ihnen keine MwSt. berechnet.',
@@ -100,14 +101,14 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'module' => 'vat_number',
         'settings' => array(),
         'type' => 'vat_number_formatter',
-        'weight' => -9,
+        'weight' => 0,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'commerce_customer_profile',
     'exclude_cv' => 0,
-    'field_name' => 'field_ust_id',
-    'label' => 'USt.-ID',
+    'field_name' => 'commerce_vat_number',
+    'label' => 'Umsatzsteuer-Identifikationsnummer',
     'required' => 0,
     'settings' => array(
       'exclude_cv' => FALSE,
@@ -117,10 +118,10 @@ function checkout_shipping_taxes_field_default_field_instances() {
       'active' => 1,
       'module' => 'vat_number',
       'settings' => array(
-        'skip_validation_on_service_failure' => 0,
+        'skip_validation_on_service_failure' => 1,
       ),
       'type' => 'vat_number_widget',
-      'weight' => 4,
+      'weight' => -10,
     ),
   );
 
@@ -483,11 +484,44 @@ function checkout_shipping_taxes_field_default_field_instances() {
       ),
       'line_item' => array(
         'label' => 'hidden',
-        'module' => 'commerce_price',
+        'module' => 'commerce_price_components',
         'settings' => array(
-          'calculation' => 0,
+          'calculation' => 'calculated_sell_price',
+          'commerce_price_components' => array(
+            'base_price' => 1,
+            'discount' => 0,
+            'fee' => 0,
+            'flat_rate_briefsendung_bis_500g' => 0,
+            'flat_rate_briefsendung_bis_1000g' => 0,
+            'flat_rate_deutschland_briefsendung_bis_50g' => 0,
+            'flat_rate_deutschland_p_ckchen_bis_2000g' => 0,
+            'flat_rate_deutschland_paeckchen_bis_5kg' => 0,
+            'flat_rate_deutschland_paket_bis_10000g' => 0,
+            'flat_rate_eu_briefsendung_bis_50g' => 0,
+            'flat_rate_eu_briefsendung_bis_500g' => 0,
+            'flat_rate_eu_briefsendung_bis_1000g' => 0,
+            'flat_rate_eu_p_ckchen_bis_2000g' => 0,
+            'flat_rate_eu_paket_bis_5000g' => 0,
+            'flat_rate_not_eu_briefsendung_bis_50g' => 0,
+            'flat_rate_not_eu_briefsendung_bis_500g' => 0,
+            'flat_rate_not_eu_briefsendung_bis_1000g' => 0,
+            'flat_rate_not_eu_p_ckchen_bis_2000g' => 0,
+            'flat_rate_not_eu_paket_bis_5000g' => 0,
+            'flat_rate_versandkosten_inklusive' => 0,
+            'shipping' => 0,
+            'vat|ch_hotel|038_2011' => 0,
+            'vat|ch_reduced|025_2011' => 0,
+            'vat|ch_standard|08_2011' => 0,
+            'vat|de_reduced|07_1983' => 1,
+            'vat|de_standard|19_2007' => 0,
+            'vat|ec_ic_rc|00' => 0,
+            'vat|no_intermediate|15_2012' => 0,
+            'vat|no_reduced|08_2012' => 0,
+            'vat|no_standard|25_2012' => 0,
+            'vat|no_zero|00_2012' => 0,
+          ),
         ),
-        'type' => 'commerce_price_formatted_amount',
+        'type' => 'commerce_price_components',
         'weight' => 0,
       ),
       'node_aehnliche_produkte' => array(
@@ -1077,7 +1111,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
   t('Stock');
   t('Subtitle');
   t('Switzerland VAT Rates');
-  t('USt.-ID');
+  t('Umsatzsteuer-Identifikationsnummer');
   t('Weight');
   t('Wenn Sie als europäisches Unternehmen außerhalb Deutschlands ihre korrekte USt-ID angeben, wird Ihnen keine MwSt. berechnet.');
 

@@ -13,19 +13,132 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'commerce_billy_auto_invoice';
-  $strongarm->value = 1;
-  $export['commerce_billy_auto_invoice'] = $strongarm;
+  $strongarm->name = 'cep_tos_extra_pane__node__1264';
+  $strongarm->value = 0;
+  $export['cep_tos_extra_pane__node__1264'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'commerce_billy_invoice_nr_last';
+  $strongarm->name = 'cep_tos_position_extra_pane__node__1264';
+  $strongarm->value = 'below';
+  $export['cep_tos_position_extra_pane__node__1264'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cep_tos_required_extra_pane__node__1264';
+  $strongarm->value = 1;
+  $export['cep_tos_required_extra_pane__node__1264'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ae_default_field_billing';
+  $strongarm->value = 'commerce_customer_address*thoroughfare';
+  $export['commerce_ae_default_field_billing'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ae_default_field_eu_vat_rc';
+  $strongarm->value = '';
+  $export['commerce_ae_default_field_eu_vat_rc'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ae_default_field_shipping';
+  $strongarm->value = 'commerce_customer_address*thoroughfare';
+  $export['commerce_ae_default_field_shipping'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ae_profile_show_billing';
+  $strongarm->value = 1;
+  $export['commerce_ae_profile_show_billing'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ae_profile_show_eu_vat_rc';
+  $strongarm->value = 0;
+  $export['commerce_ae_profile_show_eu_vat_rc'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ae_profile_show_shipping';
+  $strongarm->value = 0;
+  $export['commerce_ae_profile_show_shipping'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ajax_cart_block';
+  $strongarm->value = '127';
+  $export['commerce_ajax_cart_block'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ajax_cart_content_name';
+  $strongarm->value = '.l-main';
+  $export['commerce_ajax_cart_content_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ajax_cart_fly2cart';
+  $strongarm->value = 1;
+  $export['commerce_ajax_cart_fly2cart'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ajax_cart_fly2cart_parent';
+  $strongarm->value = '.views-fluid-grid-item';
+  $export['commerce_ajax_cart_fly2cart_parent'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ajax_cart_position';
   $strongarm->value = array(
-    'year' => '2016',
-    'id' => 62,
+    'my' => 'left top',
+    'at' => 'left bottom',
+    'collision' => '',
   );
-  $export['commerce_billy_invoice_nr_last'] = $strongarm;
+  $export['commerce_ajax_cart_position'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ajax_cart_text';
+  $strongarm->value = 'Ihr Warenkorb ist leer';
+  $export['commerce_ajax_cart_text'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ajax_cart_use_dialog';
+  $strongarm->value = 0;
+  $export['commerce_ajax_cart_use_dialog'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_ajax_cart_view';
+  $strongarm->value = 'shopping_cart.block';
+  $export['commerce_ajax_cart_view'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_billy_auto_invoice';
+  $strongarm->value = 1;
+  $export['commerce_billy_auto_invoice'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -170,9 +283,30 @@ i.A. INKOTA-netzwerk
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_cart_contents_pane_view';
+  $strongarm->value = 'commerce_cart_summary|default';
+  $export['commerce_cart_contents_pane_view'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_cart_refresh_force';
+  $strongarm->value = 1;
+  $export['commerce_cart_refresh_force'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_cart_refresh_frequency';
   $strongarm->value = '10';
   $export['commerce_cart_refresh_frequency'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_cart_refresh_mode';
+  $strongarm->value = 'owner_only';
+  $export['commerce_cart_refresh_mode'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -222,6 +356,232 @@ i.A. INKOTA-netzwerk
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_component_hidden_settings';
+  $strongarm->value = array(
+    'base_price' => array(
+      'hide' => 0,
+    ),
+    'discount' => array(
+      'hide' => 0,
+    ),
+    'shipping' => array(
+      'hide' => 0,
+    ),
+    'tax|remove_ust_7_for_non_eu_clients' => array(
+      'hide' => 0,
+    ),
+    'tax|ust_7_shops' => array(
+      'hide' => 0,
+    ),
+    'tax|remove_ust_shop_7_for_non_eu_clients' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_eu_paket_bis_5000g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_versandkosten_inklusive' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_eu_briefsendung_bis_50g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_eu_p_ckchen_bis_2000g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_deutschland_p_ckchen_bis_2000g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_briefsendung_bis_500g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_briefsendung_bis_1000g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_deutschland_briefsendung_bis_50g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_deutschland_paeckchen_bis_5kg' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_eu_briefsendung_bis_1000g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_deutschland_paket_bis_10000g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_eu_briefsendung_bis_500g' => array(
+      'hide' => 0,
+    ),
+    'tax|mwst_reduced_de' => array(
+      'hide' => 0,
+    ),
+    'vat|no_reduced|08_2012' => array(
+      'hide' => 0,
+    ),
+    'vat|no_standard|25_2012' => array(
+      'hide' => 0,
+    ),
+    'vat|no_intermediate|15_2012' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_not_eu_briefsendung_bis_50g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_not_eu_briefsendung_bis_1000g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_not_eu_briefsendung_bis_500g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_not_eu_paket_bis_5000g' => array(
+      'hide' => 0,
+    ),
+    'flat_rate_not_eu_p_ckchen_bis_2000g' => array(
+      'hide' => 0,
+    ),
+    'vat|ch_reduced|025_2011' => array(
+      'hide' => 0,
+    ),
+    'vat|ch_hotel|038_2011' => array(
+      'hide' => 0,
+    ),
+    'vat|ch_standard|08_2011' => array(
+      'hide' => 0,
+    ),
+    'vat|ec_ic_rc|00' => array(
+      'hide' => 0,
+    ),
+    'vat|no_zero|00_2012' => array(
+      'hide' => 0,
+    ),
+    'vat|de_standard|19_2007' => array(
+      'hide' => 0,
+    ),
+    'vat|de_reduced|07_1983' => array(
+      'hide' => 0,
+    ),
+    'fee' => array(
+      'hide' => 0,
+    ),
+  );
+  $export['commerce_component_hidden_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_component_price_order';
+  $strongarm->value = array(
+    'base_price' => array(
+      'weight' => '-50',
+    ),
+    'shipping' => array(
+      'weight' => '-49',
+    ),
+    'tax|remove_ust_7_for_non_eu_clients' => array(
+      'weight' => '-48',
+    ),
+    'tax|ust_7_shops' => array(
+      'weight' => '-47',
+    ),
+    'tax|remove_ust_shop_7_for_non_eu_clients' => array(
+      'weight' => '-46',
+    ),
+    'flat_rate_eu_paket_bis_5000g' => array(
+      'weight' => '-45',
+    ),
+    'flat_rate_versandkosten_inklusive' => array(
+      'weight' => '-44',
+    ),
+    'flat_rate_eu_briefsendung_bis_50g' => array(
+      'weight' => '-43',
+    ),
+    'flat_rate_eu_p_ckchen_bis_2000g' => array(
+      'weight' => '-42',
+    ),
+    'flat_rate_deutschland_p_ckchen_bis_2000g' => array(
+      'weight' => '-41',
+    ),
+    'flat_rate_briefsendung_bis_500g' => array(
+      'weight' => '-40',
+    ),
+    'flat_rate_briefsendung_bis_1000g' => array(
+      'weight' => '-39',
+    ),
+    'flat_rate_deutschland_briefsendung_bis_50g' => array(
+      'weight' => '-38',
+    ),
+    'flat_rate_deutschland_paeckchen_bis_5kg' => array(
+      'weight' => '-37',
+    ),
+    'flat_rate_eu_briefsendung_bis_1000g' => array(
+      'weight' => '-36',
+    ),
+    'flat_rate_deutschland_paket_bis_10000g' => array(
+      'weight' => '-35',
+    ),
+    'flat_rate_eu_briefsendung_bis_500g' => array(
+      'weight' => '-34',
+    ),
+    'tax|mwst_reduced_de' => array(
+      'weight' => '-33',
+    ),
+    'vat|no_reduced|08_2012' => array(
+      'weight' => '-32',
+    ),
+    'vat|no_standard|25_2012' => array(
+      'weight' => '-31',
+    ),
+    'vat|no_intermediate|15_2012' => array(
+      'weight' => '-30',
+    ),
+    'flat_rate_not_eu_briefsendung_bis_50g' => array(
+      'weight' => '-29',
+    ),
+    'flat_rate_not_eu_briefsendung_bis_1000g' => array(
+      'weight' => '-28',
+    ),
+    'flat_rate_not_eu_briefsendung_bis_500g' => array(
+      'weight' => '-27',
+    ),
+    'flat_rate_not_eu_paket_bis_5000g' => array(
+      'weight' => '-26',
+    ),
+    'flat_rate_not_eu_p_ckchen_bis_2000g' => array(
+      'weight' => '-25',
+    ),
+    'vat|ch_reduced|025_2011' => array(
+      'weight' => '-24',
+    ),
+    'vat|ch_hotel|038_2011' => array(
+      'weight' => '-23',
+    ),
+    'vat|ch_standard|08_2011' => array(
+      'weight' => '-22',
+    ),
+    'vat|ec_ic_rc|00' => array(
+      'weight' => '-21',
+    ),
+    'vat|no_zero|00_2012' => array(
+      'weight' => '-20',
+    ),
+    'vat|de_standard|19_2007' => array(
+      'weight' => '-19',
+    ),
+    'vat|de_reduced|07_1983' => array(
+      'weight' => '-18',
+    ),
+    'discount' => array(
+      'weight' => '-17',
+    ),
+    'fee' => array(
+      'weight' => '-16',
+    ),
+  );
+  $export['commerce_component_price_order'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_customer_profile_billing_addressbook';
   $strongarm->value = 1;
   $export['commerce_customer_profile_billing_addressbook'] = $strongarm;
@@ -253,6 +613,41 @@ i.A. INKOTA-netzwerk
   $strongarm->name = 'commerce_customer_profile_billing_profile_copy_source';
   $strongarm->value = 'shipping';
   $export['commerce_customer_profile_billing_profile_copy_source'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_eu_vat_rc_addressbook';
+  $strongarm->value = 0;
+  $export['commerce_customer_profile_eu_vat_rc_addressbook'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_eu_vat_rc_field';
+  $strongarm->value = 'commerce_customer_eu_vat_rc';
+  $export['commerce_customer_profile_eu_vat_rc_field'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_eu_vat_rc_profile_copy';
+  $strongarm->value = 0;
+  $export['commerce_customer_profile_eu_vat_rc_profile_copy'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_eu_vat_rc_profile_copy_default';
+  $strongarm->value = 1;
+  $export['commerce_customer_profile_eu_vat_rc_profile_copy_default'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_customer_profile_eu_vat_rc_profile_copy_source';
+  $strongarm->value = 'billing';
+  $export['commerce_customer_profile_eu_vat_rc_profile_copy_source'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -415,6 +810,7 @@ i.A. INKOTA-netzwerk
     'LYD' => 0,
     'MAD' => 0,
     'MDL' => 0,
+    'MKD' => 0,
     'MMK' => 0,
     'MNT' => 0,
     'MOP' => 0,
@@ -484,12 +880,96 @@ i.A. INKOTA-netzwerk
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_order_account_pane_auth_display';
+  $strongarm->value = 1;
+  $export['commerce_order_account_pane_auth_display'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_order_account_pane_mail_double_entry';
+  $strongarm->value = 0;
+  $export['commerce_order_account_pane_mail_double_entry'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_order_apply_pricing_rules_link';
+  $strongarm->value = 1;
+  $export['commerce_order_apply_pricing_rules_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_order_auto_revision';
+  $strongarm->value = 1;
+  $export['commerce_order_auto_revision'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_order_help_text';
+  $strongarm->value = '';
+  $export['commerce_order_help_text'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_order_simulate_checkout_link';
+  $strongarm->value = 1;
+  $export['commerce_order_simulate_checkout_link'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_payment_pane_no_method_behavior';
+  $strongarm->value = 'message_event';
+  $export['commerce_payment_pane_no_method_behavior'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_payment_pane_require_method';
+  $strongarm->value = 0;
+  $export['commerce_payment_pane_require_method'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_shipping_pane_require_service';
+  $strongarm->value = 0;
+  $export['commerce_shipping_pane_require_service'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_shipping_recalculate_services';
+  $strongarm->value = 0;
+  $export['commerce_shipping_recalculate_services'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_simplenews_checkout_hide_subscribed';
+  $strongarm->value = 1;
+  $export['commerce_simplenews_checkout_hide_subscribed'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'commerce_simplenews_checkout_message';
   $strongarm->value = array(
     'value' => '<p>Bestellen Sie den INKOTA Newsletter gleich mit und bleiben Sie auf dem Laufenden. Sie können den Newsletter jederzeit wieder abbestellen.</p>',
     'format' => 'filtered_html',
   );
   $export['commerce_simplenews_checkout_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'commerce_vat_direction';
+  $strongarm->value = 'reverse';
+  $export['commerce_vat_direction'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -524,6 +1004,40 @@ i.A. INKOTA-netzwerk
     ),
   );
   $export['field_bundle_settings_message__commerce_order_donation_thank_you'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_message__commerce_order_order_confirmation_versand';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(
+        'message__message_text__0' => array(
+          'message_notify_email_subject' => array(
+            'visible' => TRUE,
+            'weight' => 0,
+          ),
+          'message_notify_email_body' => array(
+            'visible' => FALSE,
+            'weight' => 0,
+          ),
+        ),
+        'message__message_text__1' => array(
+          'message_notify_email_subject' => array(
+            'visible' => FALSE,
+            'weight' => 0,
+          ),
+          'message_notify_email_body' => array(
+            'visible' => TRUE,
+            'weight' => 0,
+          ),
+        ),
+      ),
+    ),
+  );
+  $export['field_bundle_settings_message__commerce_order_order_confirmation_versand'] = $strongarm;
 
   return $export;
 }

@@ -60,7 +60,7 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'pane_id' => 'checkout_review',
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => 0,
+    'weight' => -20,
     'enabled' => 1,
     'review' => 1,
   );
@@ -73,6 +73,17 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'collapsible' => 0,
     'collapsed' => 0,
     'enabled' => 0,
+    'review' => 1,
+  );
+
+  $panes['commerce_fieldgroup_pane__group_commerce_order_note'] = array(
+    'enabled' => 1,
+    'pane_id' => 'commerce_fieldgroup_pane__group_commerce_order_note',
+    'page' => 'checkout',
+    'fieldset' => 1,
+    'collapsible' => 0,
+    'collapsed' => 0,
+    'weight' => -16,
     'review' => 1,
   );
 
@@ -131,6 +142,17 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'review' => 1,
   );
 
+  $panes['customer_profile_eu_vat_rc'] = array(
+    'page' => 'shipping',
+    'weight' => -18,
+    'pane_id' => 'customer_profile_eu_vat_rc',
+    'fieldset' => 1,
+    'collapsible' => 0,
+    'collapsed' => 0,
+    'enabled' => 1,
+    'review' => 1,
+  );
+
   $panes['customer_profile_shipping'] = array(
     'page' => 'shipping',
     'weight' => -20,
@@ -144,11 +166,11 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
 
   $panes['extra_pane__node__1264'] = array(
     'pane_id' => 'extra_pane__node__1264',
-    'page' => 'checkout',
+    'page' => 'review',
     'fieldset' => 1,
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -14,
+    'weight' => -19,
     'enabled' => 1,
     'review' => 1,
   );
@@ -181,7 +203,7 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'pane_id' => 'stock_validation_checkout_pane',
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -11,
+    'weight' => -14,
     'enabled' => 1,
     'review' => 1,
   );

@@ -21,7 +21,7 @@ function checkout_shipping_taxes_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Bemerkungen',
-    'weight' => '6',
+    'weight' => '4',
     'children' => array(
       0 => 'field_commerce_order_bemerkungen',
     ),
@@ -30,6 +30,7 @@ function checkout_shipping_taxes_field_group_info() {
       'label' => 'Bemerkungen',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'group-commerce-order-note field-group-fieldset',
         'description' => '',
       ),

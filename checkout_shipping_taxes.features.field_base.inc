@@ -201,6 +201,27 @@ function checkout_shipping_taxes_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'commerce_vat_number'.
+  $field_bases['commerce_vat_number'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(
+      0 => 'commerce_customer_profile',
+    ),
+    'field_name' => 'commerce_vat_number',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'vat_number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'vat_number',
+  );
+
   // Exported field_base: 'field_physical_weight'.
   $field_bases['field_physical_weight'] = array(
     'active' => 1,
@@ -287,25 +308,6 @@ function checkout_shipping_taxes_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_ust_id'.
-  $field_bases['field_ust_id'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_ust_id',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'vat_number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'vat_number',
   );
 
   // Exported field_base: 'message_commerce_order'.

@@ -60,7 +60,7 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'pane_id' => 'checkout_review',
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => 0,
+    'weight' => -20,
     'enabled' => 1,
     'review' => 1,
   );
@@ -73,6 +73,17 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'collapsible' => 0,
     'collapsed' => 0,
     'enabled' => 0,
+    'review' => 1,
+  );
+
+  $panes['commerce_fieldgroup_pane__group_commerce_order_note'] = array(
+    'enabled' => 1,
+    'pane_id' => 'commerce_fieldgroup_pane__group_commerce_order_note',
+    'page' => 'checkout',
+    'fieldset' => 1,
+    'collapsible' => 0,
+    'collapsed' => 0,
+    'weight' => -16,
     'review' => 1,
   );
 
@@ -131,6 +142,17 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'review' => 1,
   );
 
+  $panes['customer_profile_eu_vat_rc'] = array(
+    'page' => 'shipping',
+    'weight' => -18,
+    'pane_id' => 'customer_profile_eu_vat_rc',
+    'fieldset' => 1,
+    'collapsible' => 0,
+    'collapsed' => 0,
+    'enabled' => 1,
+    'review' => 1,
+  );
+
   $panes['customer_profile_shipping'] = array(
     'page' => 'shipping',
     'weight' => -20,
@@ -144,11 +166,11 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
 
   $panes['extra_pane__node__1264'] = array(
     'pane_id' => 'extra_pane__node__1264',
-    'page' => 'checkout',
+    'page' => 'review',
     'fieldset' => 1,
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -14,
+    'weight' => -19,
     'enabled' => 1,
     'review' => 1,
   );
@@ -181,7 +203,7 @@ function checkout_shipping_taxes_commerce_features_default_checkout_panes() {
     'pane_id' => 'stock_validation_checkout_pane',
     'collapsible' => 0,
     'collapsed' => 0,
-    'weight' => -11,
+    'weight' => -14,
     'enabled' => 1,
     'review' => 1,
   );
@@ -733,6 +755,56 @@ function checkout_shipping_taxes_default_message_type() {
           "value" : "\\u003Cp\\u003E\\u0026lt;p\\u0026gt;Hallo [current-user:field_user_anrede] [current-user:field_user_nachname],\\u0026lt;br \\/\\u0026gt;vielen Dank f\\u00fcr Ihre Spende @{message:message-commerce-order:order-number} an INKOTA. \\u0026lt;\\/p\\u0026gt;\\u0026lt;p\\u0026gt;We will send you a donation receipt at the end of the year for your fiscal documents\\u0026lt;\\/p\\u0026gt;\\u0026lt;p\\u0026gt;Please contact us if you have any questions about your donation.\\u0026lt;\\/p\\u0026gt;\\u003C\\/p\\u003E",
           "format" : "commerce_order_message",
           "safe_value" : "\\u003Cp\\u003E\\u0026lt;p\\u0026gt;Hallo [current-user:field_user_anrede] [current-user:field_user_nachname],\\u0026lt;br \\/\\u0026gt;vielen Dank f\\u00fcr Ihre Spende @{message:message-commerce-order:order-number} an INKOTA. \\u0026lt;\\/p\\u0026gt;\\u0026lt;p\\u0026gt;We will send you a donation receipt at the end of the year for your fiscal documents\\u0026lt;\\/p\\u0026gt;\\u0026lt;p\\u0026gt;Please contact us if you have any questions about your donation.\\u0026lt;\\/p\\u0026gt;\\u003C\\/p\\u003E"
+        }
+      ],
+      "und" : [
+        {
+          "value" : "Order @{message:message-commerce-order:order-number} at [site:name]",
+          "format" : null
+        },
+        {
+          "value" : "Thanks for your order @{message:message-commerce-order:order-number} at [site:name].\\r\\n\\r\\nIf this is your first order with us, you will receive a separate e-mail with login instructions. You can view your order history with us at any time by logging into our website at:\\r\\n\\r\\n[site:login-url]\\r\\n\\r\\nYou can find the status of your current order at:\\r\\n\\r\\n[message:message-commerce-order:view-url]\\r\\n\\r\\nPlease contact us if you have any questions about your order.",
+          "format" : "commerce_order_message",
+          "safe_value" : "\\u003Cp\\u003EThanks for your order @{message:message-commerce-order:order-number} at [site:name].\\u003C\\/p\\u003E\\n\\u003Cp\\u003EIf this is your first order with us, you will receive a separate e-mail with login instructions. You can view your order history with us at any time by logging into our website at:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[site:login-url]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EYou can find the status of your current order at:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:message-commerce-order:view-url]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EPlease contact us if you have any questions about your order.\\u003C\\/p\\u003E"
+        }
+      ]
+    }
+  }');
+  $items['commerce_order_order_confirmation_versand'] = entity_import('message_type', '{
+    "name" : "commerce_order_order_confirmation_versand",
+    "description" : "Commerce Order: order confirmation versand",
+    "argument_keys" : [ "%[site:current-cart-order]" ],
+    "argument" : [],
+    "category" : "message_type",
+    "data" : {
+      "token options" : { "clear" : 0 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "en",
+    "arguments" : null,
+    "message_text" : {
+      "de" : [
+        {
+          "value" : "\\u003Cp\\u003ENeue Bestellung Nr. @{message:message-commerce-order:order-number}\\u0026nbsp;im [site:name]\\u003C\\/p\\u003E\\r\\n",
+          "format" : "filtered_html",
+          "safe_value" : "\\u003Cp\\u003ENeue Bestellung Nr. @{message:message-commerce-order:order-number}\\u00a0im [site:name]\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "\\u003Cp\\u003EHallo,\\u003C\\/p\\u003E\\u003Cp\\u003E\\u003Cbr \\/\\u003Eeine neue\\u0026nbsp;Bestellung mit der Bestellnr. @{message:message-commerce-order:order-number}\\u0026nbsp;ist gerade erstellt worden.\\u003C\\/p\\u003E\\u003Cp\\u003E[message:message_commerce_order]\\u003C\\/p\\u003E\\u003Cp\\u003E\\u0026nbsp;\\u003C\\/p\\u003E\\u003Cp\\u003EBitte so schnell wie m\\u00f6glich bearbeiten:\\u003C\\/p\\u003E\\u003Cp\\u003E\\u0026lt;a href=\\u0026quot;\\/admin\\/commerce\\/orders\\u0026quot;\\u0026gt;Zur Bestellansicht im Webshop\\u0026lt;\\/a\\u0026gt;\\u003C\\/p\\u003E",
+          "format" : "commerce_order_message",
+          "safe_value" : "\\u003Cp\\u003EHallo,\\u003C\\/p\\u003E\\n\\u003Cp\\u003Eeine neue\\u0026nbsp;Bestellung mit der Bestellnr. @{message:message-commerce-order:order-number}\\u0026nbsp;ist gerade erstellt worden.\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:message_commerce_order]\\u003C\\/p\\u003E\\n\\u003Cp\\u003E\\u0026nbsp;\\u003C\\/p\\u003E\\n\\u003Cp\\u003EBitte so schnell wie m\\u00f6glich bearbeiten:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E\\u0026lt;a href=\\u0026quot;\\/admin\\/commerce\\/orders\\u0026quot;\\u0026gt;Zur Bestellansicht im Webshop\\u0026lt;\\/a\\u0026gt;\\u003C\\/p\\u003E"
+        }
+      ],
+      "en" : [
+        {
+          "value" : "\\u003Cp\\u003ENeue Bestellung Nr. @{message:message-commerce-order:order-number} im [site:name]\\u003C\\/p\\u003E\\r\\n",
+          "format" : "filtered_html",
+          "safe_value" : "\\u003Cp\\u003ENeue Bestellung Nr. @{message:message-commerce-order:order-number} im [site:name]\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "\\u003Cp\\u003EHallo,\\u003Cbr \\/\\u003ENeue Bestellung mit der Bestellnr. @{message:message-commerce-order:order-number}:\\u003C\\/p\\u003E\\u003Cp\\u003E[message:message_commerce_order]\\u003C\\/p\\u003E\\u003Cp\\u003EBitte so schnell wie m\\u00f6glich bearbeiten!\\u003Cbr \\/\\u003E\\u0026lt;a href=\\u0026quot;\\/admin\\/commerce\\/orders\\u0026quot;\\u0026gt;Zur Bestell\\u00fcbersicht im Webshop\\u0026lt;\\/a\\u0026gt;\\u003C\\/p\\u003E",
+          "format" : "commerce_order_message",
+          "safe_value" : "\\u003Cp\\u003EHallo,\\u003Cbr \\/\\u003ENeue Bestellung mit der Bestellnr. @{message:message-commerce-order:order-number}:\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:message_commerce_order]\\u003C\\/p\\u003E\\n\\u003Cp\\u003EBitte so schnell wie m\\u00f6glich bearbeiten!\\u003Cbr \\/\\u003E\\u0026lt;a href=\\u0026quot;\\/admin\\/commerce\\/orders\\u0026quot;\\u0026gt;Zur Bestell\\u00fcbersicht im Webshop\\u0026lt;\\/a\\u0026gt;\\u003C\\/p\\u003E"
         }
       ],
       "und" : [

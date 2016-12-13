@@ -692,6 +692,115 @@ function checkout_shipping_taxes_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_10_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_10_rabatt_dossier_und_texte" : {
+      "LABEL" : "10% Rabatt Dossier und Texte",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "custom", "rabatt" ],
+      "REQUIRES" : [
+        "commerce_rules_extra",
+        "rules",
+        "commerce_line_item",
+        "commerce_product_reference"
+      ],
+      "ON" : { "commerce_product_calculate_sell_price" : [] },
+      "IF" : [
+        { "commerce_rules_extra_rules_condition_has_terms" : {
+            "line_item" : [ "commerce-line-item" ],
+            "voc_name" : "type",
+            "term_id" : { "value" : { "163" : "163", "164" : "164" } },
+            "product_display" : 1,
+            "term_operator" : "IOO"
+          }
+        },
+        { "data_is" : {
+            "data" : [ "commerce-line-item:quantity" ],
+            "op" : "\\u003E",
+            "value" : "9"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_line_item_unit_price_multiply" : {
+            "commerce_line_item" : [ "commerce_line_item" ],
+            "amount" : "0.90",
+            "component_name" : "discount",
+            "round_mode" : "1"
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_5_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_5_rabatt_dossier_und_texte" : {
+      "LABEL" : "5% Rabatt Dossier und Texte",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "custom", "rabatt" ],
+      "REQUIRES" : [
+        "commerce_rules_extra",
+        "rules",
+        "commerce_line_item",
+        "commerce_product_reference"
+      ],
+      "ON" : { "commerce_product_calculate_sell_price" : [] },
+      "IF" : [
+        { "commerce_rules_extra_rules_condition_has_terms" : {
+            "line_item" : [ "commerce-line-item" ],
+            "voc_name" : "type",
+            "term_id" : { "value" : { "163" : "163", "164" : "164" } },
+            "product_display" : 1,
+            "term_operator" : "IOO"
+          }
+        },
+        { "data_is" : {
+            "data" : [ "commerce-line-item:quantity" ],
+            "op" : "\\u003E",
+            "value" : "4"
+          }
+        },
+        { "data_is" : {
+            "data" : [ "commerce-line-item:quantity" ],
+            "op" : "\\u003C",
+            "value" : "10"
+          }
+        }
+      ],
+      "DO" : [
+        { "commerce_line_item_unit_price_multiply" : {
+            "commerce_line_item" : [ "commerce-line-item" ],
+            "amount" : "0.95",
+            "component_name" : "discount",
+            "round_mode" : "1"
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_auto_add_shipping_service'] = entity_import('rules_config', '{ "rules_auto_add_shipping_service" : {
+      "LABEL" : "Auto-add shipping service",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "commerce_shipping", "entity" ],
+      "ON" : { "commerce_order_update" : [] },
+      "IF" : [
+        { "data_is" : { "data" : [ "commerce-order:status" ], "value" : "checkout_review" } },
+        { "data_is" : { "data" : [ "commerce-order:type" ], "value" : "commerce_order" } },
+        { "NOT data_is_empty" : { "data" : [ "commerce-order:commerce-customer-shipping" ] } }
+      ],
+      "DO" : [
+        { "commerce_shipping_method_collect_rates" : {
+            "shipping_method_name" : "flat_rate",
+            "commerce_order" : [ "commerce_order" ]
+          }
+        },
+        { "commerce_shipping_rate_apply" : {
+            "commerce_order" : [ "commerce_order" ],
+            "shipping_service_name" : [ "" ]
+          }
+        }
+      ]
+    }
+  }');
   $items['rules_check_if_the_shipping_is_to_eu'] = entity_import('rules_config', '{ "rules_check_if_the_shipping_is_to_eu" : {
       "LABEL" : "Check if the Shipping is to EU",
       "PLUGIN" : "and",
