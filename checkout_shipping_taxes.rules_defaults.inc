@@ -76,14 +76,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "480",
+            "value" : "470",
             "unit" : "g"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "980",
+            "value" : "950",
             "unit" : "g"
           }
         }
@@ -121,7 +121,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "480",
+            "value" : "470",
             "unit" : "g"
           }
         }
@@ -190,14 +190,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "1000",
+            "value" : "950",
             "unit" : "g"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "1980",
+            "value" : "1950",
             "unit" : "g"
           }
         }
@@ -228,14 +228,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "2000",
+            "value" : "1950",
             "unit" : "g"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "4980",
+            "value" : "4850",
             "unit" : "g"
           }
         }
@@ -266,14 +266,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "4980",
+            "value" : "4850",
             "unit" : "g"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "9980",
+            "value" : "9650",
             "unit" : "g"
           }
         }
@@ -305,14 +305,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "480",
+            "value" : "470",
             "unit" : "g"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "980",
+            "value" : "950",
             "unit" : "g"
           }
         }
@@ -351,7 +351,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "480",
+            "value" : "470",
             "unit" : "g"
           }
         }
@@ -422,14 +422,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "980",
+            "value" : "950",
             "unit" : "g"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "1.98",
+            "value" : "1.95",
             "unit" : "kg"
           }
         }
@@ -461,14 +461,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "1.98",
+            "value" : "1.95",
             "unit" : "kg"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "4.9",
+            "value" : "4.85",
             "unit" : "kg"
           }
         }
@@ -708,8 +708,8 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_rules_extra_rules_condition_has_terms" : {
             "line_item" : [ "commerce-line-item" ],
             "voc_name" : "type",
-            "term_id" : { "value" : { "163" : "163", "164" : "164" } },
-            "product_display" : 1,
+            "term_id" : { "value" : { "16" : "16", "163" : "163", "164" : "164" } },
+            "product_display" : "1",
             "term_operator" : "IOO"
           }
         },
@@ -747,8 +747,8 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_rules_extra_rules_condition_has_terms" : {
             "line_item" : [ "commerce-line-item" ],
             "voc_name" : "type",
-            "term_id" : { "value" : { "163" : "163", "164" : "164" } },
-            "product_display" : 1,
+            "term_id" : { "value" : { "16" : "16", "163" : "163", "164" : "164" } },
+            "product_display" : "1",
             "term_operator" : "IOO"
           }
         },

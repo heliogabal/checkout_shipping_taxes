@@ -10,31 +10,6 @@
 function checkout_shipping_taxes_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'commerce_ch_vat'.
-  $field_bases['commerce_ch_vat'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(
-      0 => 'commerce_product',
-    ),
-    'field_name' => 'commerce_ch_vat',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'commerce_vat_reference',
-    'settings' => array(
-      'vat_country' => array(
-        'CH' => 'CH',
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'commerce_vat_rate_reference',
-  );
-
   // Exported field_base: 'commerce_customer_address'.
   $field_bases['commerce_customer_address'] = array(
     'active' => 1,
@@ -100,31 +75,6 @@ function checkout_shipping_taxes_field_default_field_bases() {
         'SE' => 0,
         'SI' => 0,
         'SK' => 0,
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'commerce_vat_rate_reference',
-  );
-
-  // Exported field_base: 'commerce_no_vat'.
-  $field_bases['commerce_no_vat'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(
-      0 => 'commerce_product',
-    ),
-    'field_name' => 'commerce_no_vat',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'commerce_vat_reference',
-    'settings' => array(
-      'vat_country' => array(
-        'NO' => 'NO',
       ),
     ),
     'translatable' => 0,

@@ -150,7 +150,7 @@ function checkout_shipping_taxes_commerce_checkout_panes_default() {
     'collapsible' => 0,
     'collapsed' => 0,
     'enabled' => 1,
-    'review' => 1,
+    'review' => 0,
   );
 
   $panes['customer_profile_shipping'] = array(

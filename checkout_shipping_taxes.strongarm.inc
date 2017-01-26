@@ -266,12 +266,12 @@ Das Team vom INKOTA webshop';
 ',
     'invoice_location' => 'Datum: Berlin',
     'invoice_date_format' => 'd.m.Y',
-    'invoice_text' => '<p>Vielen Dank für Ihre Bestellung. <br/>Bitte überweisen Sie den Rechnungsbetrag innerhalb von 14 Tagen unter Angabe <strong><u>Ihres Namens und unserer Rechnungsnummer</u></strong> auf unser Konto, IBAN DE06 3506 0190 1555 0000 10,  BIC:
-GENODED1DKD bei der KD-Bank.</p>
+    'invoice_text' => '<p>Vielen Dank für Ihre Bestellung. <br/>Bitte überweisen Sie den Rechnungsbetrag innerhalb von 14 Tagen unter Angabe <strong><u>Ihres Namens und unserer Rechnungsnummer</u></strong> auf unser Konto: </p><p>IBAN DE06 3506 0190 1555 0000 10<br />BIC:
+GENODED1DKD <br />Bank: KD-Bank.</p>
 <p>
 Mit freundlichen Grüßen<br />
-Dorothea Decker<br />
-i.A. INKOTA-netzwerk
+Dorothée Decker<br />
+i.A. INKOTA-netzwerk e.V.
 </p>
 <p>&nbsp;</p>
 
