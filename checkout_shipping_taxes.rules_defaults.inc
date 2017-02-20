@@ -693,7 +693,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['rules_10_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_10_rabatt_dossier_und_texte" : {
-      "LABEL" : "10% Rabatt Dossier und Texte",
+      "LABEL" : "30% Rabatt Dossier, Texte und S\\u00fcdlink",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "custom", "rabatt" ],
@@ -723,16 +723,16 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_line_item_unit_price_multiply" : {
             "commerce_line_item" : [ "commerce_line_item" ],
-            "amount" : "0.90",
+            "amount" : "0.70",
             "component_name" : "discount",
-            "round_mode" : "1"
+            "round_mode" : "2"
           }
         }
       ]
     }
   }');
   $items['rules_5_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_5_rabatt_dossier_und_texte" : {
-      "LABEL" : "5% Rabatt Dossier und Texte",
+      "LABEL" : "20% Rabatt Dossier und Texte und S\\u00fcdlink",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "custom", "rabatt" ],
@@ -768,7 +768,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_line_item_unit_price_multiply" : {
             "commerce_line_item" : [ "commerce-line-item" ],
-            "amount" : "0.95",
+            "amount" : "0.80",
             "component_name" : "discount",
             "round_mode" : "1"
           }

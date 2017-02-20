@@ -187,7 +187,17 @@ Bankinstitut: KD-Bank
 Sobald der Betrag bei uns eingegangen ist, versenden wir Ihre Bestellung.
 
 Viele Grüße
-Das Team vom INKOTA webshop';
+Ihr INKOTA Team
+- - -
+
+INKOTA-netzwerk e.V.
+Chrysanthemenstraße 1-3
+10407 Berlin
+
+E-Mail: versand@inkota.de
+Tel.: +49 (0)30 420 8202-25
+Fax: +49 (0)30 420 8202-10
+www.inkota.de';
   $export['commerce_billy_mail_body'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -361,9 +371,6 @@ i.A. INKOTA-netzwerk e.V.
     'base_price' => array(
       'hide' => 0,
     ),
-    'discount' => array(
-      'hide' => 0,
-    ),
     'shipping' => array(
       'hide' => 0,
     ),
@@ -458,6 +465,9 @@ i.A. INKOTA-netzwerk e.V.
       'hide' => 0,
     ),
     'vat|de_reduced|07_1983' => array(
+      'hide' => 0,
+    ),
+    'discount' => array(
       'hide' => 0,
     ),
     'fee' => array(
@@ -564,13 +574,13 @@ i.A. INKOTA-netzwerk e.V.
     'vat|no_zero|00_2012' => array(
       'weight' => '-20',
     ),
-    'vat|de_standard|19_2007' => array(
+    'discount' => array(
       'weight' => '-19',
     ),
-    'vat|de_reduced|07_1983' => array(
+    'vat|de_standard|19_2007' => array(
       'weight' => '-18',
     ),
-    'discount' => array(
+    'vat|de_reduced|07_1983' => array(
       'weight' => '-17',
     ),
     'fee' => array(
