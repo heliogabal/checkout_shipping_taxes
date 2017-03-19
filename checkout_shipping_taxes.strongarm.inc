@@ -107,8 +107,8 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm->name = 'commerce_ajax_cart_position';
   $strongarm->value = array(
     'my' => 'left top',
-    'at' => 'left bottom',
-    'collision' => '',
+    'at' => 'left top',
+    'collision' => 'flip',
   );
   $export['commerce_ajax_cart_position'] = $strongarm;
 
@@ -172,32 +172,31 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_mail_body';
-  $strongarm->value = 'Hallo [commerce-order:owner:field_user_anrede] [commerce-order:owner:name],
+  $strongarm->value = '<p>Hallo [commerce-order:commerce_extra_tokens_order_owner],</p>
 
-Vielen Dank für Ihre Bestellung. 
-Wir haben Ihre Bestellung fertig gestellt und senden Ihnen nun unsere Rechnung.
+<p>wir haben Ihre Bestellung bearbeitet. Sie ist nun zum Versand bereit.<br />
 
-Bitte überweisen Sie den Rechnungsbetrag von [commerce-order:commerce_order_total] unter Angabe der Rechnungsnummer [commerce-order:order-id] auf folgendes Konto:
+Im Anhang finden Sie die Rechnung zu Ihrer Bestellung. Bitte überweisen Sie die Rechnungssumme von <b>[commerce-order:commerce_extra_tokens_order_total_sum]</b> unter Angabe der Rechnungsnummer <b>[commerce-order:order-number]</b> innerhalb von 14 Tagen auf unser Konto:</p>
 
-Kontoinhaber: INKOTA-netzwerk e.V.
-IBAN: DE06 3506 0190 1555 0000 10
-BIC: GENODED1DKD
-Bankinstitut: KD-Bank
+<p>Kontoinhaber: INKOTA-netzwerk e.V.<br />
+IBAN: DE06350601901555000010<br />
+BIC: GENODED1DKD<br />
+Bankinstitut: KD-Bank</p>
 
-Sobald der Betrag bei uns eingegangen ist, versenden wir Ihre Bestellung.
+<p>Vielen Dank!</p>
 
-Viele Grüße
-Ihr INKOTA Team
+<p>Viele Grüße<br />
+Ihr INKOTA-Team</p>
 - - -
 
-INKOTA-netzwerk e.V.
-Chrysanthemenstraße 1-3
-10407 Berlin
+<p>INKOTA-netzwerk e.V.<br />
+Chrysanthemenstraße 1-3<br />
+10407 Berlin</p>
 
-E-Mail: versand@inkota.de
-Tel.: +49 (0)30 420 8202-25
-Fax: +49 (0)30 420 8202-10
-www.inkota.de';
+<p>E-Mail: versand@inkota.de<br />
+Tel.: +49 (0)30 420 8202-25<br />
+Fax: +49 (0)30 420 8202-10<br />
+www.inkota.de</p>';
   $export['commerce_billy_mail_body'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -225,7 +224,7 @@ www.inkota.de';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_mail_subject';
-  $strongarm->value = 'INKOTA Shop: Ihre Rechnung';
+  $strongarm->value = 'Rechnung zu Ihrer Bestellung [commerce-order:order-number] im [site:name]';
   $export['commerce_billy_mail_subject'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1048,6 +1047,40 @@ i.A. INKOTA-netzwerk e.V.
     ),
   );
   $export['field_bundle_settings_message__commerce_order_order_confirmation_versand'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_message__commerce_order_summary';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(
+        'message__message_text__0' => array(
+          'message_notify_email_subject' => array(
+            'visible' => TRUE,
+            'weight' => 0,
+          ),
+          'message_notify_email_body' => array(
+            'visible' => FALSE,
+            'weight' => 0,
+          ),
+        ),
+        'message__message_text__1' => array(
+          'message_notify_email_subject' => array(
+            'visible' => FALSE,
+            'weight' => 0,
+          ),
+          'message_notify_email_body' => array(
+            'visible' => TRUE,
+            'weight' => 0,
+          ),
+        ),
+      ),
+    ),
+  );
+  $export['field_bundle_settings_message__commerce_order_summary'] = $strongarm;
 
   return $export;
 }

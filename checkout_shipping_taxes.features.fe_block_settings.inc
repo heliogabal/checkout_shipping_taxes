@@ -33,7 +33,7 @@ function checkout_shipping_taxes_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'inkshop',
-        'weight' => -34,
+        'weight' => -33,
       ),
       'omega' => array(
         'region' => '',
@@ -157,7 +157,7 @@ cart',
         'region' => 'content',
         'status' => 1,
         'theme' => 'inkshop',
-        'weight' => -40,
+        'weight' => -37,
       ),
       'omega' => array(
         'region' => 'content',
