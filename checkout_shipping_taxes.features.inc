@@ -427,7 +427,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
     'not_eu_briefsendung_bis_1000g' => array(
       'name' => 'not_eu_briefsendung_bis_1000g',
       'base' => 'not_eu_briefsendung_bis_1000g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
@@ -442,7 +442,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'module' => 'commerce_flat_rate',
       'title' => 'Not EU Briefsendung bis 1000g',
       'base_rate' => array(
-        'amount' => 1000,
+        'amount' => 935,
         'currency_code' => 'EUR',
         'data' => array(),
       ),
@@ -453,7 +453,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
     'not_eu_briefsendung_bis_500g' => array(
       'name' => 'not_eu_briefsendung_bis_500g',
       'base' => 'not_eu_briefsendung_bis_500g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
@@ -468,7 +468,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'module' => 'commerce_flat_rate',
       'title' => 'Not EU Briefsendung bis 500g',
       'base_rate' => array(
-        'amount' => 500,
+        'amount' => 467,
         'currency_code' => 'EUR',
         'data' => array(),
       ),
@@ -479,7 +479,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
     'not_eu_briefsendung_bis_50g' => array(
       'name' => 'not_eu_briefsendung_bis_50g',
       'base' => 'not_eu_briefsendung_bis_50g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
@@ -494,7 +494,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'module' => 'commerce_flat_rate',
       'title' => 'Not EU Briefsendung bis 50g',
       'base_rate' => array(
-        'amount' => 300,
+        'amount' => 280,
         'currency_code' => 'EUR',
         'data' => array(),
       ),
@@ -505,7 +505,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
     'not_eu_p_ckchen_bis_2000g' => array(
       'name' => 'not_eu_p_ckchen_bis_2000g',
       'base' => 'not_eu_p_ckchen_bis_2000g',
-      'display_title' => 'Versandkostenpauschale',
+      'display_title' => 'Versandkostenpauschale (ohne MwSt.)',
       'description' => '',
       'shipping_method' => 'flat_rate',
       'rules_component' => TRUE,
@@ -520,7 +520,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'module' => 'commerce_flat_rate',
       'title' => 'Not EU Päckchen bis 2000g',
       'base_rate' => array(
-        'amount' => 1200,
+        'amount' => 1121,
         'currency_code' => 'EUR',
         'data' => array(),
       ),
