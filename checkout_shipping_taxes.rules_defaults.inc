@@ -60,7 +60,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['commerce_shipping_service_briefsendung_bis_1000g'] = entity_import('rules_config', '{ "commerce_shipping_service_briefsendung_bis_1000g" : {
-      "LABEL" : "Rate Briefsendung bis 1000g",
+      "LABEL" : "Rate Deutschland Briefsendung bis 1000g",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
       "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
@@ -152,7 +152,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "4850",
+            "value" : "1950",
             "unit" : "g"
           }
         },
@@ -177,8 +177,31 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate Deutschland Paket bis 31,5kg",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_shipping" ],
-      "USES VARIABLES" : { "commerce_order" : { "type" : "commerce_order", "label" : "Reihenfolge" } },
+      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
+      "IF" : [
+        { "commerce_order_compare_address" : {
+            "commerce_order" : [ "commerce_order" ],
+            "address_field" : "commerce_customer_shipping|commerce_customer_address",
+            "address_component" : "country",
+            "value" : "DE"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003E",
+            "value" : "9650",
+            "unit" : "g"
+          }
+        },
+        { "commerce_physical_rules_order_weight_comparison" : {
+            "commerce_order" : [ "commerce_order" ],
+            "operator" : "\\u003C=",
+            "value" : "31200",
+            "unit" : "g"
+          }
+        }
+      ],
       "DO" : [
         { "commerce_shipping_service_rate_order" : {
             "shipping_service_name" : "deutschland_paket_bis_31_5kg",
@@ -245,7 +268,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "50",
+            "value" : "48",
             "unit" : "g"
           }
         },
@@ -281,9 +304,9 @@ function checkout_shipping_taxes_default_rules_configuration() {
           }
         },
         { "component_rules_check_if_the_shipping_is_to_eu" : [] },
-        { "NOT commerce_physical_rules_order_weight_comparison" : {
+        { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
-            "operator" : "\\u003C=",
+            "operator" : "\\u003E",
             "value" : "0",
             "unit" : "g"
           }
@@ -291,7 +314,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "50",
+            "value" : "48",
             "unit" : "g"
           }
         }
@@ -369,7 +392,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "980",
+            "value" : "950",
             "unit" : "g"
           }
         }
@@ -401,7 +424,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "50",
+            "value" : "48",
             "unit" : "g"
           }
         },
@@ -447,7 +470,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "50",
+            "value" : "48",
             "unit" : "g"
           }
         }
@@ -479,14 +502,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
-            "value" : "500",
+            "value" : "950",
             "unit" : "g"
           }
         },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003C=",
-            "value" : "1980",
+            "value" : "1950",
             "unit" : "g"
           }
         }
