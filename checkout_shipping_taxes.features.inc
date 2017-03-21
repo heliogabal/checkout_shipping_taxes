@@ -416,7 +416,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'module' => 'commerce_flat_rate',
       'title' => 'EU Päckchen bis 2000g',
       'base_rate' => array(
-        'amount' => 1200,
+        'amount' => 1500,
         'currency_code' => 'EUR',
         'data' => array(),
       ),
@@ -520,7 +520,7 @@ function checkout_shipping_taxes_commerce_flat_rate_default_services() {
       'module' => 'commerce_flat_rate',
       'title' => 'Not EU Päckchen bis 2000g',
       'base_rate' => array(
-        'amount' => 1121,
+        'amount' => 1402,
         'currency_code' => 'EUR',
         'data' => array(),
       ),

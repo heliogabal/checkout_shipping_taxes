@@ -858,7 +858,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "pet_action_send_pet" : {
             "pet_name" : "newsletter_abo_an_die_verantwortlichen",
-            "to_text" : "\\u003Crhalbmann@gmail.com\\u003E",
+            "to_text" : "\\u003Crhalbmann@gmail.com\\u003E,\\u003Cversand@inkota.de\\u003E",
             "to_account" : [ "" ],
             "account_subs" : [ "" ],
             "node_subs" : [ "" ]
@@ -887,7 +887,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_pet_action_send_pet" : {
             "pet_name" : "donation_email",
-            "to_text" : "\\u003Crhalbmann@gmail.com\\u003E, \\u003Cversand@inkota.de\\u003E",
+            "to_text" : "\\u003Crhalbmann@gmail.com\\u003E,\\u003Cspenden@inkota.de\\u003E",
             "to_account" : [ "" ],
             "account_subs" : [ "commerce-order:owner" ],
             "entity_subs" : [ "commerce-order" ]
