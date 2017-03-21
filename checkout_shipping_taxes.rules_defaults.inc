@@ -9,6 +9,231 @@
  */
 function checkout_shipping_taxes_default_rules_configuration() {
   $items = array();
+  $items['checkout_shipping_taxes_check_if_the_shipping_is_known'] = entity_import('rules_config', '{ "checkout_shipping_taxes_check_if_the_shipping_is_known" : {
+      "LABEL" : "Check if the Shipping is known",
+      "PLUGIN" : "and",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "commerce_order" ],
+      "AND" : [
+        { "OR" : [
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "FI"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "FR"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "GR"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "HR"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "HU"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "IE"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "IT"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "LV"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "LT"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "LU"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "MT"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "NL"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "PL"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "PT"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "RO"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "SK"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "DE"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "ES"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "SE"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "GB"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "AT"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "BE"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "BG"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "CY"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "CZ"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "DK"
+              }
+            },
+            { "commerce_order_compare_address" : {
+                "commerce_order" : [ "site:current-cart-order" ],
+                "address_field" : "commerce_customer_shipping|commerce_customer_address",
+                "address_component" : "country",
+                "value" : "EE"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }');
+  $items['commerce_eu_vat_ic_remove_vat_outside_of_eu'] = entity_import('rules_config', '{ "commerce_eu_vat_ic_remove_vat_outside_of_eu" : {
+      "LABEL" : "Remove VAT outside of EU",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce VAT" ],
+      "REQUIRES" : [ "rules", "commerce_line_item", "commerce_product_reference" ],
+      "ON" : { "commerce_product_calculate_sell_price" : [] },
+      "IF" : [
+        { "component_checkout_shipping_taxes_check_if_the_shipping_is_known" : [] },
+        { "NOT component_commerce_eu_vat_place_of_supply_eu" : { "commerce_order" : [ "commerce-line-item:order" ] } },
+        { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_product" } },
+        { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_unit_price" } }
+      ],
+      "DO" : [
+        { "commerce_line_item_unit_price_divide" : {
+            "commerce_line_item" : [ "commerce_line_item" ],
+            "amount" : "1.07",
+            "component_name" : "base_price",
+            "round_mode" : "1"
+          }
+        }
+      ]
+    }
+  }');
   $items['commerce_payment_bank_transfer'] = entity_import('rules_config', '{ "commerce_payment_bank_transfer" : {
       "LABEL" : "Bank Transfer",
       "PLUGIN" : "reaction rule",

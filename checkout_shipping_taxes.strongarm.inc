@@ -1082,5 +1082,37 @@ i.A. INKOTA-netzwerk e.V.
   );
   $export['field_bundle_settings_message__commerce_order_summary'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'mailgun_api_key';
+  $strongarm->value = 'key-e07952b6998790694ddf07364f0a2220';
+  $export['mailgun_api_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'mail_system';
+  $strongarm->value = array(
+    'default-system' => 'MailgunMailSystem',
+    'views_send_direct' => 'MailgunMailSystem',
+    'mailgun_test' => 'MailgunMailSystem',
+  );
+  $export['mail_system'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'media_dialog_theme';
+  $strongarm->value = 'seven';
+  $export['media_dialog_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'media_draggable';
+  $strongarm->value = '1';
+  $export['media_draggable'] = $strongarm;
+
   return $export;
 }
