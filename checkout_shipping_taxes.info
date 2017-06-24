@@ -207,6 +207,7 @@ features[rules_config][] = commerce_shipping_service_not_eu_briefsendung_bis_500
 features[rules_config][] = commerce_shipping_service_not_eu_briefsendung_bis_50g
 features[rules_config][] = commerce_shipping_service_not_eu_p_ckchen_bis_2000g
 features[rules_config][] = commerce_shipping_service_versandkosten_inklusive
+features[rules_config][] = commerce_tax_rate_remove_ust_7_for_non_eu_clients
 features[rules_config][] = rules_10_rabatt_dossier_und_texte
 features[rules_config][] = rules_5_rabatt_dossier_und_texte
 features[rules_config][] = rules_auto_add_shipping_service

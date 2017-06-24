@@ -215,22 +215,14 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "Commerce VAT" ],
-      "REQUIRES" : [ "rules", "commerce_line_item", "commerce_product_reference" ],
+      "REQUIRES" : [ "rules", "commerce_product_reference" ],
       "ON" : { "commerce_product_calculate_sell_price" : [] },
       "IF" : [
         { "component_checkout_shipping_taxes_check_if_the_shipping_is_known" : [] },
-        { "NOT component_commerce_eu_vat_place_of_supply_eu" : { "commerce_order" : [ "commerce-line-item:order" ] } },
-        { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_product" } },
-        { "entity_has_field" : { "entity" : [ "commerce-line-item" ], "field" : "commerce_unit_price" } }
+        { "NOT component_rules_check_if_the_shipping_is_to_eu" : [] }
       ],
       "DO" : [
-        { "commerce_line_item_unit_price_divide" : {
-            "commerce_line_item" : [ "commerce_line_item" ],
-            "amount" : "1.07",
-            "component_name" : "base_price",
-            "round_mode" : "1"
-          }
-        }
+        { "component_commerce_tax_rate_remove_ust_7_for_non_eu_clients" : { "commerce_line_item" : [ "commerce_line_item" ] } }
       ]
     }
   }');
@@ -596,17 +588,10 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate Not EU Briefsendung bis 1000g",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "REQUIRES" : [ "rules", "commerce_physical", "commerce_shipping" ],
       "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
       "IF" : [
-        { "commerce_order_compare_address" : {
-            "commerce_order" : [ "commerce_order" ],
-            "address_field" : "commerce_customer_shipping|commerce_customer_address",
-            "address_component" : "country",
-            "operator" : "is one of",
-            "value" : "CH\\r\\nNO"
-          }
-        },
+        { "NOT component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -635,17 +620,10 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate Not EU Briefsendung bis 500g",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "REQUIRES" : [ "rules", "commerce_physical", "commerce_shipping" ],
       "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
       "IF" : [
-        { "commerce_order_compare_address" : {
-            "commerce_order" : [ "commerce_order" ],
-            "address_field" : "commerce_customer_shipping|commerce_customer_address",
-            "address_component" : "country",
-            "operator" : "is one of",
-            "value" : "CH\\r\\nNO"
-          }
-        },
+        { "NOT component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -674,17 +652,10 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate Not EU Briefsendung bis 50g",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "REQUIRES" : [ "rules", "commerce_physical", "commerce_shipping" ],
       "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
       "IF" : [
-        { "commerce_order_compare_address" : {
-            "commerce_order" : [ "commerce_order" ],
-            "address_field" : "commerce_customer_shipping|commerce_customer_address",
-            "address_component" : "country",
-            "operator" : "is one of",
-            "value" : "CH\\r\\nNO"
-          }
-        },
+        { "NOT component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -713,17 +684,10 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "LABEL" : "Rate Not EU P\\u00e4ckchen bis 2000g",
       "PLUGIN" : "rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "commerce_order", "commerce_physical", "commerce_shipping" ],
+      "REQUIRES" : [ "rules", "commerce_physical", "commerce_shipping" ],
       "USES VARIABLES" : { "commerce_order" : { "label" : "Reihenfolge", "type" : "commerce_order" } },
       "IF" : [
-        { "commerce_order_compare_address" : {
-            "commerce_order" : [ "commerce_order" ],
-            "address_field" : "commerce_customer_shipping|commerce_customer_address",
-            "address_component" : "country",
-            "operator" : "is one of",
-            "value" : "CH\\r\\nNO"
-          }
-        },
+        { "NOT component_rules_check_if_the_shipping_is_to_eu" : [] },
         { "commerce_physical_rules_order_weight_comparison" : {
             "commerce_order" : [ "commerce_order" ],
             "operator" : "\\u003E",
@@ -758,6 +722,28 @@ function checkout_shipping_taxes_default_rules_configuration() {
         { "commerce_shipping_service_rate_order" : {
             "shipping_service_name" : "versandkosten_inklusive",
             "commerce_order" : [ "commerce-order" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['commerce_tax_rate_remove_ust_7_for_non_eu_clients'] = entity_import('rules_config', '{ "commerce_tax_rate_remove_ust_7_for_non_eu_clients" : {
+      "LABEL" : "Remove USt 7% for Non-EU clients berechnen",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "Commerce Tax", "vat" ],
+      "REQUIRES" : [ "rules", "commerce_line_item" ],
+      "USES VARIABLES" : { "commerce_line_item" : { "label" : "Position", "type" : "commerce_line_item" } },
+      "IF" : [
+        { "NOT component_rules_check_if_the_shipping_is_to_eu" : [] },
+        { "component_checkout_shipping_taxes_check_if_the_shipping_is_known" : [] }
+      ],
+      "DO" : [
+        { "commerce_line_item_unit_price_divide" : {
+            "commerce_line_item" : [ "commerce_line_item" ],
+            "amount" : "1.07",
+            "component_name" : "base_price",
+            "round_mode" : "1"
           }
         }
       ]
@@ -803,7 +789,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['rules_5_rabatt_dossier_und_texte'] = entity_import('rules_config', '{ "rules_5_rabatt_dossier_und_texte" : {
-      "LABEL" : "20% Rabatt Dossier und Texte und S\\u00fcdlink",
+      "LABEL" : "20% Rabatt Dossier, Texte und S\\u00fcdlink",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "custom", "rabatt" ],
@@ -1074,7 +1060,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
     }
   }');
   $items['rules_email_suedlink_abo'] = entity_import('rules_config', '{ "rules_email_suedlink_abo" : {
-      "LABEL" : "Email S\\u00fcdlink Abo",
+      "LABEL" : "Email Newsletter Abo",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "TAGS" : [ "inkota" ],
@@ -1083,7 +1069,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "pet_action_send_pet" : {
             "pet_name" : "newsletter_abo_an_die_verantwortlichen",
-            "to_text" : "\\u003Crhalbmann@gmail.com\\u003E,\\u003Cversand@inkota.de\\u003E",
+            "to_text" : "\\u003Canmeldung@inkota.de\\u003E,\\u003Cversand@inkota.de\\u003E",
             "to_account" : [ "" ],
             "account_subs" : [ "" ],
             "node_subs" : [ "" ]
@@ -1112,7 +1098,7 @@ function checkout_shipping_taxes_default_rules_configuration() {
       "DO" : [
         { "commerce_pet_action_send_pet" : {
             "pet_name" : "donation_email",
-            "to_text" : "\\u003Crhalbmann@gmail.com\\u003E,\\u003Cspenden@inkota.de\\u003E",
+            "to_text" : "\\u003Cspenden@inkota.de\\u003E",
             "to_account" : [ "" ],
             "account_subs" : [ "commerce-order:owner" ],
             "entity_subs" : [ "commerce-order" ]

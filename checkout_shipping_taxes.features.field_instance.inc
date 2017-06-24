@@ -54,6 +54,12 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'type' => 'addressfield_default',
         'weight' => -10,
       ),
+      'newsletter_abo_profil_vorname' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'commerce_customer_profile',
@@ -938,6 +944,7 @@ function checkout_shipping_taxes_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'colorbox_node_classes' => '',
           'colorbox_node_height' => 600,
           'colorbox_node_link' => FALSE,

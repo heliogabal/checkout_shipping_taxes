@@ -172,27 +172,20 @@ function checkout_shipping_taxes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_mail_body';
-  $strongarm->value = '<p>Hallo [commerce-order:commerce_extra_tokens_order_owner],</p>
-
-<p>wir haben Ihre Bestellung bearbeitet. Sie ist nun zum Versand bereit.<br />
-
-Im Anhang finden Sie die Rechnung zu Ihrer Bestellung. Bitte überweisen Sie die Rechnungssumme von <b>[commerce-order:commerce_extra_tokens_order_total_sum]</b> unter Angabe der Rechnungsnummer <b>[commerce-order:order-number]</b> innerhalb von 14 Tagen auf unser Konto:</p>
-
+  $strongarm->value = '<p>Hallo [commerce-order:commerce_extra_tokens_order_owner]</p>
+<p>wir haben Ihre Bestellung bearbeitet. Sie ist nun zum Versand bereit.</p>
+<p>Im Anhang finden Sie die Rechnung zu Ihrer Bestellung. Bitte überweisen Sie die Rechnungssumme von <b>[commerce-order:commerce_extra_tokens_order_total_sum]</b> unter Angabe der Rechnungsnummer <b>[commerce-order:order-number]</b> innerhalb von 14 Tagen auf unser Konto:</p>
 <p>Kontoinhaber: INKOTA-netzwerk e.V.<br />
 IBAN: DE06350601901555000010<br />
 BIC: GENODED1DKD<br />
 Bankinstitut: KD-Bank</p>
-
 <p>Vielen Dank!</p>
-
 <p>Viele Grüße<br />
 Ihr INKOTA-Team</p>
 - - -
-
 <p>INKOTA-netzwerk e.V.<br />
 Chrysanthemenstraße 1-3<br />
 10407 Berlin</p>
-
 <p>E-Mail: versand@inkota.de<br />
 Tel.: +49 (0)30 420 8202-25<br />
 Fax: +49 (0)30 420 8202-10<br />
@@ -257,9 +250,9 @@ www.inkota.de</p>';
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_pdf_order_statuses';
   $strongarm->value = array(
-    'canceled' => 'canceled',
     'completed' => 'completed',
     'invoiced' => 'invoiced',
+    'versandt' => 'versandt',
     'mahnung_1' => 'mahnung_1',
     'mahnung_2' => 'mahnung_2',
     'gesperrt' => 'gesperrt',
@@ -314,7 +307,7 @@ i.A. INKOTA-netzwerk e.V.
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_cart_refresh_mode';
-  $strongarm->value = 'owner_only';
+  $strongarm->value = 'always';
   $export['commerce_cart_refresh_mode'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1094,7 +1087,7 @@ i.A. INKOTA-netzwerk e.V.
   $strongarm->api_version = 1;
   $strongarm->name = 'mail_system';
   $strongarm->value = array(
-    'default-system' => 'MailgunMailSystem',
+    'default-system' => 'MimeMailSystem__MailgunMailSystem',
     'views_send_direct' => 'MailgunMailSystem',
     'mailgun_test' => 'MailgunMailSystem',
   );
